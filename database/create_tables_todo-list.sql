@@ -44,7 +44,7 @@ CREATE TABLE reminders (
     id INT PRIMARY KEY AUTO_INCREMENT,
     task_id INT,
     reminder_time DATETIME,
-    repeat_interval INT DEFAULT NULL, -- Interval for repeat in days
-    repeat_end_date DATE DEFAULT NULL, -- End date for repeating reminders
+    repeat_interval INT DEFAULT NULL, -- interval for repeat in days
+    repeat_end_date DATE DEFAULT NULL, -- end date for repeating reminders
     FOREIGN KEY (task_id) REFERENCES tasks(id)
 );

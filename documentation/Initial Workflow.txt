@@ -66,6 +66,9 @@ task_collaborators = (id (PK), task_id (FK), user_id (FK))
 Additional possible features:  
 Task to be “important”
 
+# E/R diagram 
+"charts & diagrams/ER Diagram (WIP).png"
+
 
 # Target Audience 
 
@@ -79,6 +82,15 @@ Task to be “important”
   To keep track of household and family activities. 
 
  
+# Flowchart (preliminary)  
+"charts & diagrams/User Flowchart (WIP).png"
+
+
+#Colour scheme and fonts(preliminary):
+"reference material/Font and Colours.png"
+
+
+
 
 RESEARCH PERFORMED 
 
@@ -136,7 +148,8 @@ User Interface Elements:
   Search bar for easy searching 
   Filter and sorting options  
   User profile and settings 
-
+Image:  
+"reference material/Composite Reference Image.png"
  
 
 # Iana’s research:  
