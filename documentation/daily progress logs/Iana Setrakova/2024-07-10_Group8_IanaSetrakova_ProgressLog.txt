@@ -6,4 +6,7 @@
     - Worked together in Figma creating wireframe design of Dashboard page 
     - Created logo 
     - Created login and sign up page
-    
+3.  - Finished log in, sign up, homepage pages
+    - Worked with Figma wireframe together
+    - Exported all the wireframes
+    - Started "Initial Workflow.txt"

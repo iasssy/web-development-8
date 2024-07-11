@@ -1,0 +1,7 @@
+Day 1: 2024-07-09
+
+- Researched most popular to-do list applications
+- compiled a list of common features, UI design, colour schemes, etc. based on the aforementioned to-do list applications
+- create a user flowchart in Draw.io; attempted using Figma for this, but it was too confusing for me.
+- attempted to create UX storyboard, but I believe we need the wireframes finished first.
+- began looking up colour schemes

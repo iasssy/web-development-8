@@ -1,0 +1,164 @@
+Initial Workflow of the Final Project 
+
+Group 8:
+  Craig Collins (1038789) 
+  Iana Setrakova (2457647)  
+
+ 
+ 
+PLANNING AND PREPARATION 
+
+# Planning, steps performed 
+
+Our plan includes to choose the optimal design comprising essential features like user registration and task management. The webpages to be created are:  
+
+  * Home page 
+  * User log in 
+  * Users sign up 
+  * Dashboard to manage user profile and tasks 
+  * Page or modal showing a single task to be created or updated 
+  * Contact us page 
+
+We need to enable PHP session when user logs in. And when session is created, user can  
+
+  * Manage own profile  
+  * Delete their account  
+  * View the listing of to-do items 
+  * Adding new to-do item 
+  * Updating items  
+  * Removing items  
+  * Completing item 
+
+ 
+
+# Data Model  
+
+  Users: Can create multiple tasks, each associated with only one user. 
+  Tasks: Belong to one list. 
+  Lists: Can have multiple tasks. 
+  Reminders: Each task can have one reminder. 
+ 
+
+  EXTRA possible features for future development: 
+  Tags: Associated with one or multiple tasks. 
+  Task Collaborators: Enables multiple users to collaborate on a single task.
+
+ 
+
+Database structure in Third normal form (3NF): 
+
+users = (id (PK), username, password, avatar_image, email) 
+
+tasks = (id (PK), name, description, task_order, user_id (FK), list_id (FK), due_date, completed)  
+
+lists = (id (PK), name, list_color) 
+
+reminders = (id (PK), task_id (FK), reminder_time, repeat_interval, repeat_end_date)  
+
+ 
+
+Extra tables for future development (if time allows): 
+
+tags = (id (PK), name, tag_color) 
+task_tags = (task_id (FK), tag_id (FK)) 
+task_collaborators = (id (PK), task_id (FK), user_id (FK)) 
+
+Additional possible features:  
+Task to be “important”
+
+# E/R diagram 
+"charts & diagrams/ER Diagram (WIP).png"
+
+
+# Target Audience 
+
+  Students: 
+  To organize homework and study schedules. 
+
+  Professionals: 
+  To manage work tasks and project deadlines. 
+
+  Home Organizers: 
+  To keep track of household and family activities. 
+
+ 
+# Flowchart (preliminary)  
+"charts & diagrams/User Flowchart (WIP).png"
+
+
+#Colour scheme and fonts(preliminary):
+"reference material/Font and Colours.png"
+
+
+
+
+RESEARCH PERFORMED 
+
+# Craig’s Research Notes 
+
+Best To-Do List Apps:
+  Todoist 
+  TickTick 
+  Microsoft To Do 
+  Apple Reminders 
+  Things 
+  Google Tasks 
+  Any.do 
+
+(https://zapier.com/blog/best-todo-list-apps/) 
+
+ 
+
+Common Features:
+  Task creation, management, organization 
+  Due dates 
+  Reminders 
+  Priorities 
+  Categorization 
+  Recurring tasks 
+  Cross-platform syncing 
+  Collaboration 
+  Integration 
+  Notifications/Alerts 
+  Notes 
+  Attachments 
+
+ 
+
+Common Appearance:
+  User Friendly 
+  Minimalist/neutral tones 
+  Distraction-free colours 
+  Dark text against light backgrounds
+  Primary colors for interactive elements, like buttons, icons and task indicator 
+  Blue, red, green
+  Secondary colours for additional emphasis, categories, and priorities 
+  Orange, yellow, teal 
+  Pastels for highlighting list backgrounds, calendar views 
+  Colour coding 
+  Optional dark mode 
+
+ 
+
+User Interface Elements:
+  Task is usually in the center of the screen 
+  The navigation bar is usually a left sidebar and hamburger on mobile 
+  Add task buttons usually at the bottom-right corner of the screen, easily accessible 
+  Modal or side pane with task details to editing 
+  Search bar for easy searching 
+  Filter and sorting options  
+  User profile and settings 
+Image:  
+"reference material/Composite Reference Image.png"
+ 
+
+# Iana’s research:  
+
+https://dribbble.com/shots/22373497-Create-a-task-Interaction 
+https://todoist.com/ 
+https://www.any.do/ 
+Microsoft To Do 
+https://to-do.office.com/tasks/ 
+https://uxdesign.cc/got-stuck-with-to-do-list-i-create-a-new-app-819879fedce0 
+https://uizard.io/templates/website-templates/to-do-website/ 
+
