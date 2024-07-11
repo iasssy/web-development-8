@@ -149,27 +149,3 @@ https://to-do.office.com/tasks/
 https://uxdesign.cc/got-stuck-with-to-do-list-i-create-a-new-app-819879fedce0 
 https://uizard.io/templates/website-templates/to-do-website/ 
 
-  
-
-
-COMMUNICATIONS  
-
-Day 1 
-
-  We got acquainted with team member’s background.
-   
-  The tasks divided after the first meeting:    
-  * Iana begins researching various To-Do List websites to gather insights for our project's database design, makes 3NF of database. 
-  * Craig starts research on specific functionalities and started drafting the storyboard and flowchart to visualize the website's structure and user interactions. 
-
-Day 2 
-
-  During our second team meeting: 
-  * Craig shared the results of research on color palettes and decided to initiate work on the Contact Us page. 
-  * Iana began creating a wireframe for the Homepage (Landing page), designed the logo, and decided to start the login and signup pages. 
-  * We collaborated effectively in Figma, simultaneously working on the wireframe design for the Dashboard page. 
-
- 
-
-
- 
