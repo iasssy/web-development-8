@@ -1,6 +1,7 @@
-Day 3
+Day 3: 2024-07-11
 
 - worked together on Figma to create the page to add/edit tasks
 - brainstormed different elements that we need or do not need
 - updated pages
 - compiled initial workflow together
+- discussed mobile applications

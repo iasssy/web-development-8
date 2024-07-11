@@ -1,2 +1,4 @@
+Day 2: 2024-07-10
+
 - created a mockup of the contact us page 
 - added some mobile alternatives for some of the pages in Figma
