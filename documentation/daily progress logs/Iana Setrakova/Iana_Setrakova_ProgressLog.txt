@@ -1,0 +1,21 @@
+Day 1 (2024-07-09)  
+    - Made research on possible designs
+    - Started to fill out documentation concerning Data Model and E/R diagram
+    - Described Target audience
+    - Filled out documentation about research 
+
+Day 2 (2024-07-10)
+    - Started to create a wireframe for Homepage (Landing page)
+    - Worked together in Figma creating wireframe design of Dashboard page 
+    - Created logo 
+    - Created login and sign up page
+
+Day 3 (2024-07-11)
+   - Finished log in, sign up, homepage pages
+    - Worked with Figma wireframe together
+    - Exported all the wireframes
+    - Started "Initial Workflow.txt"
+
+Day 4 (2024-07-12) 
+    - Created folder for website, installed Fat-free framework, created necessary folders
+    - Created branches
