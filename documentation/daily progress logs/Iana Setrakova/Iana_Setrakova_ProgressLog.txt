@@ -19,3 +19,5 @@ Day 3 (2024-07-11)
 Day 4 (2024-07-12) 
     - Created folder for website, installed Fat-free framework, created necessary folders
     - Created branches
+    - Decide to work on building login and sign up pages with Bootstrap
+    
