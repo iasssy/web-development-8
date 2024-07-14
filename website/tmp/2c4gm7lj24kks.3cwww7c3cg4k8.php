@@ -1,4 +1,4 @@
-<include href="includes/header.html">
+<?php echo $this->render('includes/header.html',NULL,get_defined_vars(),0); ?>
 
   <div class="container">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -15,5 +15,5 @@
     </div>
   </div>
 
-<include href="includes/footer.html"> 
+<?php echo $this->render('includes/footer.html',NULL,get_defined_vars(),0); ?> 
 
