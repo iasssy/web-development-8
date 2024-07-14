@@ -1,8 +1,12 @@
-# apache configuration file
+# apache (web server software) configuration file
 
+# "RewriteEngine On" enables the URL rewriting engine
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule .* index.php [L,QSA]
+# "." matches any single character, 
+# "*" means "zero or more of the preceding element.
+# ".*" matches any string, including an empty string.
