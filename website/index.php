@@ -9,8 +9,31 @@ f3 (framework engine) that holds the entire framework (server) information,
 */
 $f3 = Base::instance(); 
 
+// setting up a route to homepage
+// @home here = alias
+$f3->route('GET @home: /', 'Pages->homepage'); 
 
+$f3->route('GET @dashboard: /dashboard', 'Pages->dashboard');
 
+// handle all non-databse pages
+class Pages{
+    function homepage($f3){
+        // route alias (nickname)
+        $dashboard_route = $f3->get('BASE').$f3->alias('dashboard');
+
+        echo "Homepage content";
+        echo "<a href='{$dashboard_route}'>Dashboard</a>";
+
+    } 
+    
+    function dashboard($f3){
+        // route alias (nickname)
+        $home_route = $f3->get('BASE').$f3->alias('home');
+
+        echo "Dashboard content";
+        echo "<a href='{$home_route}'>Home</a>";
+    }
+}
 
 
 
