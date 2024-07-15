@@ -1,6 +1,0 @@
-Day 2: 2024-07-10
-
-- Worked together on creating a mockup for the application's dashboard
-- added name + logo 
-- hashed out some features we'd like, customizable icons, daily, weekly to-do lists, recurring, etc.
-- divied up some tasks as well, Craig: contact us page; Iana: sign up/login page

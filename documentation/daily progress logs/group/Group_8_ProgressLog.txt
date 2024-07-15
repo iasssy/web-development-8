@@ -21,6 +21,13 @@ Day 3: 2024-07-11
   - compiled initial workflow together
   - discussed mobile applications
 
-Day 4: 2024-07-14
+Day 4: 2024-07-12
+  - met up after class to decide what work we would do over the weekend
+  - divided up work: 2 html pages each + one additional task: Craig to build storyboard; Iana to add composer and create root directory
+
+Day 5: 2024-07-14
   - Craig created a UX storyboard, using the desktop wireframes, and created homepage
   - Iana created  log in page and routes for several pages, made page titles to be changed dynamically
+  - frequently sent updates to each other and coordinated push, pull and merge requests
+
+Day 6 (2024-07-15)

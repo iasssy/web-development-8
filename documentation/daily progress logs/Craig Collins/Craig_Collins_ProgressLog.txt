@@ -1,0 +1,31 @@
+Day 1 (2024-07-09)  	
+	- Worked on mockups, primarily mobile ones for the dashboard (profile), homepage, contact us, etc.
+	- Collected reference images into a folder in the GitHub
+	- Researched mobile applications to get a feel for what the website should look like on mobile
+	- Reviewed various mobile UI/UX design patterns for inspiration
+
+Day 2 (2024-07-10)
+	- Researched most popular to-do list applications
+	- compiled a list of common features, UI design, colour schemes, etc. based on the aforementioned to-do list applications
+	- create a user flowchart in Draw.io; attempted using Figma for this, but it was too confusing for me.
+	- attempted to create UX storyboard, but I believe we need the wireframes finished first.
+	- began looking up colour schemes
+
+Day 3 (2024-07-11)
+	- created a mockup of the contact us page
+	- added some mobile alternatives for some of the pages in Figma
+	- refined existing pages by adding additional elements
+	- made existing mockups consistent
+
+Day 4 (2024-07-12) 
+	- worked on developing storyboard
+
+Day 5 (2024-07-14)
+	- researched storyboards
+	- tested out different applications to find right one for storyboard
+	- built UX storyboard based on flowchart diagram
+	- began building index page using bootstrap
+
+Day 6 (2024-07-15)
+	- 
+    
