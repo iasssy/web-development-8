@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5407c9d-9b2b-497a-82ca-21aa56ed06ad" name="Changes" comment="" />
+    <list default="true" id="a5407c9d-9b2b-497a-82ca-21aa56ed06ad" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/daily progress logs/Craig Collins/Craig_Collins_ProgressLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/daily progress logs/Craig Collins/Craig_Collins_ProgressLog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/daily progress logs/group/Group_8_ProgressLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/daily progress logs/group/Group_8_ProgressLog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/Views/includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/Views/includes/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/public/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/public/styles/main.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,24 +30,28 @@
       <path value="$PROJECT_DIR$/website/vendor/bcosca/fatfree-core" />
     </include_path>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2jF2KvUAQUTbVZq9STDZKbsXc7L" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Craig",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/MAMP/htdocs/web-development-8",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Craig&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/MAMP/htdocs/web-development-8&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -55,6 +69,8 @@
       <option name="presentableId" value="Default" />
       <updated>1720968443907</updated>
       <workItem from="1720968444940" duration="160000" />
+      <workItem from="1721074165046" duration="902000" />
+      <workItem from="1721081578116" duration="527000" />
     </task>
     <servers />
   </component>
