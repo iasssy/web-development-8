@@ -9,7 +9,10 @@
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Master your schedule and achieve your goals</h1>
         <p class="lead">Simplify task management and and prioritize effectively.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Get started</button>
+          <button class="btn btn-primary d-inline-flex align-items-center btn-lg px-4 rounded-pill" type="button">
+            Get started 
+            <i class="bi bi-arrow-right ms-2"></i>
+          </button>
         </div>
       </div>
     </div>
