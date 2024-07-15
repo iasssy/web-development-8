@@ -6,8 +6,8 @@
           <div class="col-md-10 mx-auto col-lg-5">
              <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
               <div class="py-5 text-center">
-                <h2><span>Log in to </span>
-                    <img class="" src="public/images/Task-it-logo.svg" alt="" height="50">
+                <h2><span class="">Log in to </span>
+                    <img class="" src="public/images/Task-it-logo.svg" alt="" height="40">
                 </h2>
               </div>
               <div class="form-floating mb-3">
@@ -24,7 +24,7 @@
                 </label>
                 <p class="my-3">Forgot your password?</p>
               </div>
-              <button class="w-100 btn btn-lg btn-primary rounded-pill my-4" type="submit">Sign up</button>
+              <button class="btn btn-primary px-4 rounded-pill" type="submit">Log in</button>
               <hr class="my-5">
               <small class="text-body-secondary my-3">Don't have account?</small>
               <h5 class="">Create Account Now</h5>

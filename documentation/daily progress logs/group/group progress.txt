@@ -1,0 +1,26 @@
+Day 1: 2024-07-09
+  - We got acquainted with team member’s background. 
+  - The tasks divided after the first meeting:  
+  - Iana begins researching various To-Do List websites to gather insights for our project's database design, makes 3NF of database. 
+  - Craig starts research on specific functionalities and started drafting the storyboard and flowchart to visualize the website's structure and user interactions. 
+  - create GitHub repository
+  - created shared word document on teams
+  - created collaborative Figma space
+
+  
+Day 2: 2024-07-10
+  - Worked together on creating a mockup for the application's dashboard
+  - added name + logo 
+  - hashed out some features we'd like, customizable icons, daily, weekly to-do lists, recurring, etc.
+  - divied up some tasks as well, Craig: contact us page; Iana: sign up/login page
+
+Day 3: 2024-07-11
+  - worked together on Figma to create the page to add/edit tasks
+  - brainstormed different elements that we need or do not need
+  - updated pages
+  - compiled initial workflow together
+  - discussed mobile applications
+
+Day 4: 2024-07-14
+  - Craig created a UX storyboard, using the desktop wireframes, and created homepage
+  - Iana created  log in page and routes for several pages, made page titles to be changed dynamically

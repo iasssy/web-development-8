@@ -20,12 +20,20 @@ class Controller{
   }
  
 
-
+  /**
+   * Sets the page title for the application.
+   *
+   * This method allows changing the page title dynamically.
+   * If a title already exists, it appends the new title to the current title.
+   *
+   * @param string $title The title to set for the page.
+   */
   public function setPageTitle($title){
     $currentTitle = $this->f3->get('pageTitle');
 
     $newTitle = $title;
 
+    // Appends the current title if it exists
     if ($currentTitle != ""){
         // append string
         $newTitle .= " | ". $currentTitle;
@@ -34,4 +42,5 @@ class Controller{
     $this->f3->set('pageTitle', $newTitle);
   }
 
+  // TODO: to make same thing with meta description - set up default and append if it is already set
 }
