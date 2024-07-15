@@ -16,7 +16,7 @@
     <body>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="<?= ($BASE) ?><?= (Base::instance()->alias('home')) ?>">
                 <img src="public/images/Task-it-logo.svg" alt="Bootstrap" width="60">
               </a>
               <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarResponsive">
@@ -25,12 +25,12 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav ms-auto">
-                      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                      <li class="nav-item"><a class="nav-link" href="<?= ($BASE) ?><?= (Base::instance()->alias('home')) ?>">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="<?= ($BASE) ?><?= (Base::instance()->alias('dashboard')) ?>">Dashboard</a></li>
                       <li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
                   </ul>
                   
-                  <a href="login" class="btn btn-primary px-4 rounded-pill ms-4">Log in</a>
+                  <a href="<?= ($BASE) ?><?= (Base::instance()->alias('login')) ?>" class="btn btn-primary px-4 rounded-pill ms-4">Log in</a>
               </div>
             </div>
         </nav>
