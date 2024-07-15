@@ -22,6 +22,8 @@ $f3->route('GET @home: /', 'Pages->homepage');
 
 $f3->route('GET @dashboard: /dashboard', 'Pages->dashboard');
 
+$f3->route('GET @login: /login', 'Pages->login');
+
 
 $f3->run();
 

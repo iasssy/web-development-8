@@ -8,7 +8,8 @@
         <meta name="description" content="TASK-IT: Simplify and organize your tasks effectively with our easy-to-use to-do list application.">
         <meta name="author" content="Craig Collins, Iana Setrakova">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="public/styles/main.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="styles/main.css">
 
     </head>
 
@@ -29,7 +30,7 @@
                       <li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
                   </ul>
                   
-                  <a class="btn btn-primary">Log in</a>
+                  <a href="login" class="btn btn-primary px-4 rounded-pill ms-4">Log in</a>
               </div>
             </div>
         </nav>
