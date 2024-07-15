@@ -1,11 +1,6 @@
 <?php
 // handle all non-database pages
-class PagesController{
-
-
-    function __construct($f3){
-        $f3->set('pageTitle', 'Task-IT');
-    }
+class PagesController extends Controller{
 
 
     /**
