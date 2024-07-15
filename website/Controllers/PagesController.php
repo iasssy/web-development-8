@@ -1,6 +1,13 @@
 <?php
 // handle all non-database pages
-class Pages{
+class PagesController{
+
+
+    function __construct($f3){
+        $f3->set('pageTitle', 'Task-IT');
+    }
+
+
     /**
      * Handles the rendering of the homepage
      * 
