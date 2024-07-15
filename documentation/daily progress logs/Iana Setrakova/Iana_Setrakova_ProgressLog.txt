@@ -25,5 +25,6 @@ Day 5 (2024-07-14)
     - Create .htaccess file and routes for homepage, login, Dashboard
     - Created iniatial design of home page and log in and set up the title and meta description to be retrieved as variables 
     from class Pages
-    - 
+    - added default title, made default title to be dynamically appended with current title
+
     
