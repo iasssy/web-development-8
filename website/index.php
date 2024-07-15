@@ -9,9 +9,20 @@ f3 (framework engine) that holds the entire framework (server) information,
 */
 $f3 = Base::instance(); 
 
+// framework to automatically load the classes
+$f3->set('AUTOLOAD', 'Controllers/');
+
+// framework to automatically load templates (VIEWS)
+$f3->set('UI', 'Views/');
 
 
+// setting up a route to homepage
+// @home here = alias (nickname) of the webpage
+$f3->route('GET @home: /', 'PagesController->homepage'); 
 
+$f3->route('GET @dashboard: /dashboard', 'PagesController->dashboard');
+
+$f3->route('GET @login: /login', 'PagesController->login');
 
 
 $f3->run();
