@@ -27,5 +27,7 @@ Day 5 (2024-07-14)
 	- began building index page using bootstrap
 
 Day 6 (2024-07-15)
-	- 
+	- worked on improving the website footer
+        - update group progress log
+	- shared and explained work to team
     
