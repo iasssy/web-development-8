@@ -27,7 +27,7 @@
                   <input type="checkbox" value="remember-me"> Remember me
                 </label>
               </div>
-              <button class="btn btn-primary px-4 rounded-pill" type="submit">Sign up</button>
+              <button class="btn btn-primary btn-lg px-4 rounded-pill" type="submit">Sign up</button>
               <hr class="my-5">
               <small class="text-body-secondary my-3">Have already account?</small>
               <h5 class=""><a class="text-decoration-none" href="<?= ($BASE) ?><?= (Base::instance()->alias('login')) ?>">Log in</a></h5>

@@ -27,4 +27,16 @@ Day 5 (2024-07-14)
     from class Pages
     - added default title, made default title to be dynamically appended with current title
 
+Day 6 (2024-07-15)
+    - Continue working on sign-up page
+    - Start working on dashboard
+    - Understanding further Fat-Free framework 
+
+Day 7 (2024-07-17)
+    - added contact us page, created routes for sign up and contact us page
+    - started the creation of dashboard page
+    - created the homepage illustration image
+
+
+
     

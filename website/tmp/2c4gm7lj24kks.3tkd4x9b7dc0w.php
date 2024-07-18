@@ -15,7 +15,7 @@
     </head>
 
     <body>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg bg-body-secondary" id="header-navbar">
             <div class="container">
               <a class="navbar-brand" href="<?= ($BASE) ?><?= (Base::instance()->alias('home')) ?>">
                 <img src="images/Task-it-logo.svg" alt="Bootstrap" height="40">
