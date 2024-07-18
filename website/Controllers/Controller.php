@@ -17,6 +17,11 @@ class Controller{
     $this->f3 = $f3;
     // sets up a default page title 
     $f3->set('pageTitle', 'Task-IT');
+    
+    // array of errors
+    $f3->set('errors', null);
+
+    
   }
  
 
