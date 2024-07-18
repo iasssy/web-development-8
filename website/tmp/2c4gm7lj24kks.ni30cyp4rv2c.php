@@ -6,9 +6,13 @@
           <div class="col-md-10 mx-auto col-lg-6">
              <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
               <div class="py-5 text-center">
-                <h2><span class="">Log in to </span>
+                <h2><span class="">Sign up to </span>
                     <img class="" src="images/Task-it-logo.svg" alt="" height="40">
                 </h2>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name">
+                <label for="floatingNameInput">Name *</label>
               </div>
               <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -22,12 +26,11 @@
                 <label>
                   <input type="checkbox" value="remember-me"> Remember me
                 </label>
-                <p class="my-3">Forgot your password?</p>
               </div>
-              <button class="btn btn-primary btn-lg px-4 rounded-pill" type="submit">Log in</button>
+              <button class="btn btn-primary px-4 rounded-pill" type="submit">Sign up</button>
               <hr class="my-5">
-              <small class="text-body-secondary my-3">Don't have account?</small>
-              <h5 class=""><a href="<?= ($BASE) ?><?= (Base::instance()->alias('signup')) ?>">Create Account Now</a></h5>
+              <small class="text-body-secondary my-3">Have already account?</small>
+              <h5 class=""><a class="text-decoration-none" href="<?= ($BASE) ?><?= (Base::instance()->alias('login')) ?>">Log in</a></h5>
             </form>
           </div>
         </div>

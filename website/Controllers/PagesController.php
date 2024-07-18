@@ -37,4 +37,30 @@ class PagesController extends Controller{
         $f3->set('pageDecription', 'Log in to TASK-IT to access your personalized task management dashboard. Simplify your task management and stay organized with ease.');    
         echo Template::instance()->render('log-in.html');
     }
+
+
+
+    /**
+     * Handles the rendering of the sign up page
+     * 
+     * @param Base $f3 The Fat-Free Framework instance
+     */
+    function signup($f3){   
+        $this->setPageTitle('Sign up');
+        $f3->set('pageDecription', 'Sign up to TASK-IT to access your personalized task management dashboard.');    
+        echo Template::instance()->render('sign-up.html');
+    }
+
+
+    /**
+     * Handles the rendering of the contact us page
+     * 
+     * @param Base $f3 The Fat-Free Framework instance
+     */
+    function contact($f3){   
+        $this->setPageTitle('Contact us');
+        $f3->set('pageDecription', 'Contact us TASK-IT if you have any questions or suggestions.');    
+        echo Template::instance()->render('contact-us.html');
+    }
+
 }

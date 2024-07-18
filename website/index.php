@@ -16,6 +16,10 @@ $f3->set('AUTOLOAD', 'Controllers/');
 $f3->set('UI', 'Views/');
 
 
+// enable debugging mode
+$f3->set('DEBUG', 3);
+
+
 // setting up a route to homepage
 // @home here = alias (nickname) of the webpage
 $f3->route('GET @home: /', 'PagesController->homepage'); 
@@ -23,6 +27,11 @@ $f3->route('GET @home: /', 'PagesController->homepage');
 $f3->route('GET @dashboard: /dashboard', 'PagesController->dashboard');
 
 $f3->route('GET @login: /login', 'PagesController->login');
+
+$f3->route('GET @signup: /signup', 'PagesController->signup');
+
+
+$f3->route('GET @contact: /contact', 'PagesController->contact');
 
 
 $f3->run();
