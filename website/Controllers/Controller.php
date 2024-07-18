@@ -21,6 +21,11 @@ class Controller{
     // array of errors
     $f3->set('errors', null);
 
+    /* didn't work
+    // date and time format
+    $f3->set('dateFormat', 'Y-m-d');
+    $f3->set('timeFormat', 'H:i:s');
+    */
     
   }
  
