@@ -28,8 +28,8 @@ $f3->route('GET @dashboard: /dashboard', 'PagesController->dashboard');
 
 $f3->route('GET @login: /login', 'PagesController->login');
 
-$f3->route('GET @signup: /signup', 'PagesController->signup');
-
+$f3->route('GET @signup: /signup', 'PagesController->signup');  // show sign up form
+$f3->route('POST  @signup: /signup', 'PagesController->signupSave'); // submit sign up form
 
 $f3->route('GET @contact: /contact', 'PagesController->contact');
 

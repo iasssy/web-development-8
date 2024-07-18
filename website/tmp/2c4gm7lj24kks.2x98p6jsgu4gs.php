@@ -1,7 +1,7 @@
     
-    <footer class="footer mt-auto py-3 bg-body-tertiary">
+    <footer class="footer mt-auto py-3 bg-body-secondary">
         <div class="container">
-          <span class="text-body-secondary">Fixed bottom footer</span>
+          <span class="text-body-secondary">Some footer</span>
         </div>
       </footer>
   

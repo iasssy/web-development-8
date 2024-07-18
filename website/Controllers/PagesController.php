@@ -8,9 +8,9 @@ class PagesController extends Controller{
      * 
      * @param Base $f3 The Fat-Free Framework instance
      */
-    function homepage($f3){
+    function homepage(){
         $this->setPageTitle('Home');
-        $f3->set('pageDecription', 'TASK-IT: Simplify and organize your tasks effectively with our easy-to-use to-do list application.');
+        $this->f3->set('pageDecription', 'TASK-IT: Simplify and organize your tasks effectively with our easy-to-use to-do list application.');
         echo Template::instance()->render('index.html');
     } 
     
@@ -20,9 +20,9 @@ class PagesController extends Controller{
      * 
      * @param Base $f3 The Fat-Free Framework instance
      */
-    function dashboard($f3){  
+    function dashboard(){  
         $this->setPageTitle('Dashboard');
-        $f3->set('pageDecription', 'Manage your tasks efficiently with TASK-IT intuitive Dashboard. Stay organized and focused on your goals with our powerful task management features.');   
+        $this->f3->set('pageDecription', 'Manage your tasks efficiently with TASK-IT intuitive Dashboard. Stay organized and focused on your goals with our powerful task management features.');   
         echo Template::instance()->render('dashboard.html');
     }
 
@@ -32,35 +32,68 @@ class PagesController extends Controller{
      * 
      * @param Base $f3 The Fat-Free Framework instance
      */
-    function login($f3){   
+    function login(){   
         $this->setPageTitle('Login');
-        $f3->set('pageDecription', 'Log in to TASK-IT to access your personalized task management dashboard. Simplify your task management and stay organized with ease.');    
+        $this->f3->set('pageDecription', 'Log in to TASK-IT to access your personalized task management dashboard. Simplify your task management and stay organized with ease.');    
         echo Template::instance()->render('log-in.html');
     }
 
 
+    // TODO: loginSave function
 
     /**
      * Handles the rendering of the sign up page
      * 
      * @param Base $f3 The Fat-Free Framework instance
      */
-    function signup($f3){   
+    function signup(){   
         $this->setPageTitle('Sign up');
-        $f3->set('pageDecription', 'Sign up to TASK-IT to access your personalized task management dashboard.');    
+        $this->f3->set('pageDecription', 'Sign up to TASK-IT to access your personalized task management dashboard.');    
         echo Template::instance()->render('sign-up.html');
     }
 
+
+    /**
+     * Saving the data from sign up page form
+     * 
+     * @param Base $f3 The Fat-Free Framework instance
+     */
+    function signupSave(){  
+        // validate the form data       
+
+        // save or reroute
+        
+        $this->f3->reroute('@home');
+    }
 
     /**
      * Handles the rendering of the contact us page
      * 
      * @param Base $f3 The Fat-Free Framework instance
      */
-    function contact($f3){   
+    function contact(){   
         $this->setPageTitle('Contact us');
-        $f3->set('pageDecription', 'Contact us TASK-IT if you have any questions or suggestions.');    
+        $this->f3->set('pageDecription', 'Contact us TASK-IT if you have any questions or suggestions.');    
         echo Template::instance()->render('contact-us.html');
+    }
+
+    private function isFormSignUpValid(){
+        
+        $errors = [];
+        // validate the title
+        if (trim($this->f3->get('POST.username')) == ""){
+            array_push($errors, 'Title is not valid');
+        }
+        if (trim($this->f3->get('POST.email')) == ""){
+            array_push($errors, 'Email is not valid');
+        }
+        if (empty($errors)){
+            return true;
+        } else {
+            echo Template::instance()->render('sign-up.html');
+        }
+
+
     }
 
 }

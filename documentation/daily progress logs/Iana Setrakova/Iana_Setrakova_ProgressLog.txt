@@ -37,6 +37,7 @@ Day 7 (2024-07-17)
     - started the creation of dashboard page
     - created the homepage illustration image
 
+changed f3 to protected and removed from functions,  added signupSave route, added input names to sign up and log in
 
 
     

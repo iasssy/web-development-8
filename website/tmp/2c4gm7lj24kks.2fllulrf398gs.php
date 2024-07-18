@@ -7,7 +7,7 @@
 
     
       <!-- start of side bar-->
-      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+      <div class="col-auto bg-light col-md-3 col-xl-2 px-sm-2 px-0  mt-3 py-3">
 
           <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">             
 
@@ -46,12 +46,12 @@
                         <span class="ms-1 d-none d-sm-inline">Important</span>
                       </a>
                   </li>
-                  <li>
+                 <!---- <li>
                       <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
                         <i class="bi bi-calendar-event"></i>
-                        <span class="ms-1 d-none d-sm-inline">Dailies</span> 
+                        <span class="ms-1 d-none d-sm-inline">Dailies or Completed</span> 
                       </a>
-                  </li>
+                  </li> -->
                   <li>
                       <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
                         <i class="bi bi-briefcase"></i>
@@ -123,7 +123,8 @@
                 -->
               </div>
             </div>
-            <h1 class="display-4 mb-2 ms-0">Music</h1>
+            <small class="fw-light text-uppercase text-secondary">List name:</small>
+            <h1 class="display-3 mb-2 ms-0">Music</h1>
             <p class="lead text-muted">Manage the tasks with ease</p>
 
           </div>
