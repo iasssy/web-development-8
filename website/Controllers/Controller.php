@@ -3,7 +3,7 @@
 class Controller{
 
   // Instance of the Fat-Free framework object, to be able to use it in any functions without using it as function argument
-  private $f3;
+  protected $f3;
 
    /**
    * Constructor method
