@@ -9,22 +9,26 @@
         <p class="col-lg-10 fs-4">We'd love to hear from you! Whether you have a question about our features, settings or anything else, our team is ready to answer all your questions.</p>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <form action="{{ @BASE }}{{ 'contact' | alias }}" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
           <div class="py-5 text-center">
-            <h2><span class="">Sign up to </span>
-                <img class="" src="images/Task-it-logo.svg" alt="" height="40">
+            <h2>
+              <span class="text-uppercase">Contact us</span>
             </h2>
           </div>
+          
+        <check if="{{@msg}}"><!-- if message found then show them message -->
+          <p class='messages'>{{ @msg }}</p>
+        </check>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name">
+            <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="username">
             <label for="floatingNameInput">Name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
             <label for="floatingInput">Email address</label>
           </div>
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="comment" style="height: 100px"></textarea>
             <label for="floatingTextarea2">Comments</label>
           </div>
           <button class="btn btn-primary px-4 btn-lg rounded-pill my-4" type="submit">Send</button>

@@ -20,6 +20,7 @@ $f3->config('access.ini'); // sensitive data
 $f3->route('GET @home: /', 'PagesController->homepage'); 
 
 $f3->route('GET @dashboard: /dashboard', 'PagesController->dashboard');
+// TODO: list name or 1st list in order $f3->route('GET @dashboard: /dashboard/list/@list_name', 'PagesController->dashboard');
 
 $f3->route('GET @login: /login', 'PagesController->login');
 
@@ -29,11 +30,24 @@ $f3->route('GET @signup: /signup', 'PagesController->signup');
 // POST request to handle form submission
 $f3->route('POST @signup: /signup', 'PagesController->signupSave'); 
 
+// Contact us form
 $f3->route('GET @contact: /contact', 'PagesController->contact');
+$f3->route('POST @contact: /contact', 'PagesController->contactSave');
+
 
 // LISTS
+
+// all the lists
 $f3->route('GET @lists: /list', 'ListsController->allList');
 
+// fetching tasks by list name
+$f3->route('GET @tasksByListName: /tasks/@list_name', 'TaskListViewController->tasksByListName');
+
+
+// TASKS
+
+// add a new task - save form data  
+// $f3->route('POST @addTask: /task', 'TaskController->addTask');
 
 $f3->run();
 

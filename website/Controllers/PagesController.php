@@ -1,12 +1,24 @@
 <?php
-// handle all non-database pages
+
+// handles all pages
+
 class PagesController extends Controller{
 
+    private $listsModel; // table "lists" from database
+    private $taskListViewModel; // View "tasklistview" from database - didn't work for now
+    private $contactModel; // table "contact_us" from database
+
+    public function __construct($f3) {
+      parent::__construct($f3);
+      $this->listsModel = new Lists(); // establish database connection with table "lists"
+      $this->taskListViewModel = new TaskListView(); // establish database connection with table "lists
+      $this->contactModel = new ContactUs();
+
+    }
 
     /**
      * Handles the rendering of the homepage
      * 
-     * @param Base $f3 The Fat-Free Framework instance
      */
     function homepage(){
         $this->setPageTitle('Home');
@@ -19,18 +31,45 @@ class PagesController extends Controller{
      * Handles the rendering of the dashboard page
      * 
      * @param Base $f3 The Fat-Free Framework instance
+     * @param String $params list name to fetch the 
      */
     function dashboard(){  
+
+        // fetching the lists data for the lists for side bar
+        $resultsLists = $this->listsModel->fetchAllList();
+        $this->f3->set('resultsLists', $resultsLists);
+
         $this->setPageTitle('Dashboard');
         $this->f3->set('pageDecription', 'Manage your tasks efficiently with TASK-IT intuitive Dashboard. Stay organized and focused on your goals with our powerful task management features.');   
         echo $this->template->render('dashboard.html');
     }
+    /*  with View TaskListView 
+    function dashboard($f3, $params){  
+
+        // fetching tasks from specified list - from View TaskListView to show in right side content
+        //TODO: default - maybe order of lists, the first one in order 
+
+        // Get list name from parameters
+        $listName = $params['list_name'];
+        $tasks_by_list = $this->taskListViewModel->fetchTasksByListName($listName);
+        $f3->set('tasks_by_list', $tasks_by_list); 
+        $f3->set('list_name', $listName);
+
+
+        // fetching the data for the lists for side bar
+        $resultsLists = $this->listsModel->fetchAllList();
+        $this->f3->set('resultsLists', $resultsLists);
+
+        $this->setPageTitle('Dashboard');
+        $this->f3->set('pageDecription', 'Manage your tasks efficiently with TASK-IT intuitive Dashboard. Stay organized and focused on your goals with our powerful task management features.');   
+        echo $this->template->render('dashboard.html');
+    }
+*/
 
 
     /**
      * Handles the rendering of the log in page
      * 
-     * @param Base $f3 The Fat-Free Framework instance
      */
     function login(){   
         $this->setPageTitle('Login');
@@ -61,10 +100,12 @@ class PagesController extends Controller{
     function signupSave() {
 
         // validate the form data 
+        /* 
+        doesn't work
         if ($this->isFormSignUpValid()) {
 
-            // save and reroute
-            $this->f3->reroute('@home');
+                // save and reroute
+                $this->f3->reroute('@home');
         } else {
             
             
@@ -78,19 +119,50 @@ class PagesController extends Controller{
             echo $this->template->render('sign-up.html');
            
         }
+            */
     }
 
     /**
-     * Handles the rendering of the contact us page
+     * Handles the rendering of the contact us page with fomr
      * 
      * @param Base $f3 The Fat-Free Framework instance
      */
     function contact(){   
+        // Get any success or error messages from F3
+        $msg = $this->f3->get('msg') ?? '';
+        $this->f3->set('msg', $msg);
         $this->setPageTitle('Contact us');
         $this->f3->set('pageDecription', 'Contact us TASK-IT if you have any questions or suggestions.');    
         echo $this->template->render('contact-us.html');
     }
 
+    /**
+     * Handles the submission of the contact us page form
+     */
+    public function contactSave() {
+        // Get POST variables and ensure they are strings
+        $username = $this->f3->get("POST.username") ?? '';
+        $email = $this->f3->get("POST.email") ?? '';
+        $comment = $this->f3->get("POST.comment") ?? '';
+
+        // Validate and process form data
+        if (trim($username) === "" || trim($email) === "" || trim($comment) === "") {
+            // handle form errors
+            $this->f3->set('msg', 'All fields are required.');
+        } else {
+            // Save the data to the database
+            $this->contactModel->addItem();
+            //$this->contactModel->createMessage($username, $email, $comment);
+
+            // Set a success message
+            $this->f3->set('msg', 'Your message has been successfully sent!');
+        }
+
+        // Render the form page with the message
+        $this->contact();
+    }
+
+    
 
     /**
      * Validating the form inputs from sign up form
@@ -124,6 +196,6 @@ class PagesController extends Controller{
         }
 
 
-    }
+    } 
 
 }
