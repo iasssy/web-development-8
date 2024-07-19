@@ -9,15 +9,10 @@ f3 (framework engine) that holds the entire framework (server) information,
 */
 $f3 = Base::instance(); 
 
-// framework to automatically load the classes
-$f3->set('AUTOLOAD', 'Controllers/');
 
-// framework to automatically load templates (VIEWS)
-$f3->set('UI', 'Views/');
-
-
-// enable debugging mode
-$f3->set('DEBUG', 3);
+// CONFIGURATION FILE
+$f3->config('config.ini');
+$f3->config('access.ini'); // sensitive data
 
 
 // setting up a route to homepage
@@ -28,10 +23,16 @@ $f3->route('GET @dashboard: /dashboard', 'PagesController->dashboard');
 
 $f3->route('GET @login: /login', 'PagesController->login');
 
-$f3->route('GET @signup: /signup', 'PagesController->signup');  // show sign up form
-$f3->route('POST  @signup: /signup', 'PagesController->signupSave'); // submit sign up form
+// GET request to display the sign-up form
+$f3->route('GET @signup: /signup', 'PagesController->signup');  
+
+// POST request to handle form submission
+$f3->route('POST @signup: /signup', 'PagesController->signupSave'); 
 
 $f3->route('GET @contact: /contact', 'PagesController->contact');
+
+// LISTS
+$f3->route('GET @lists: /list', 'ListsController->allList');
 
 
 $f3->run();

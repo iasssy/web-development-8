@@ -37,7 +37,10 @@ Day 7 (2024-07-17)
     - started the creation of dashboard page
     - created the homepage illustration image
 
-changed f3 to protected and removed from functions,  added signupSave route, added input names to sign up and log in
+Day 8 (2024-7-18)
+    - almost finished dashboard page, added JavaScript links to footer, but couldn't change header background, 
+    - corrected links on the button on hero banner on homepage, added input names to sign up and log in
+    - changed f3 to protected and removed from functions, added signupSave route
 
 
     
