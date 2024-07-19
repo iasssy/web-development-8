@@ -4,6 +4,11 @@ class Controller{
 
   // Instance of the Fat-Free framework object, to be able to use it in any functions without using it as function argument
   protected $f3;
+  /* TODO: doesn't work for me in PagesController $this->template->reder('index.html');*/
+  protected $template; 
+  
+
+
 
    /**
    * Constructor method
@@ -27,6 +32,10 @@ class Controller{
     $f3->set('timeFormat', 'H:i:s');
     */
     
+    /* 
+    TODO: doesn't work for me $this->template->reder('index.html') */
+    $this->template = new Template;
+   
   }
  
 

@@ -68,24 +68,7 @@
                   <hr class="w-100 border border-secondary border-1">
                 
                   <small class="text-uppercase text-secondary ms-lg-3 mx-auto mx-lg-0">My lists</small>
-                  <li>
-                      <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
-                        <i class="bi bi-music-note"></i>
-                        <span class="ms-1 d-none d-sm-inline">Music</span> 
-                      </a>
-                  </li>  
-                  <li>
-                      <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
-                        <i class="bi bi-music-note"></i>
-                        <span class="ms-1 d-none d-sm-inline">Music</span> 
-                      </a>
-                  </li>  
-                  <li>
-                      <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
-                        <i class="bi bi-music-note"></i>
-                        <span class="ms-1 d-none d-sm-inline">Music</span> 
-                      </a>
-                  </li>  
+                  <?php echo $this->render('{{ @BASE }}/list',NULL,get_defined_vars(),0); ?>
                   
               </ul>
           </div>
