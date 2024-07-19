@@ -1,14 +1,14 @@
 
 
-<repeat group="{{@results}}" value="{{@item}}">
+<repeat group="{{ @tasks_by_list }}" value="{{ @item_task_list }}">
   <label class="list-group-item d-flex gap-3 align-items-start py-3">
     <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
     <div class="d-flex flex-column me-auto">
-      <strong>{{ @item['title'] }}</strong>
-      <p>{{ @item['description'] }}</p>
+      <strong>{{ @item_task_list.task_title }}</strong>
+      <p>{{ @item_task_list.task_description }}</p>
       <small class="text-body-secondary d-flex gap-3">
-        <i class="bi bi-calendar-event"></i>July 20, 2024<br>
-        <i class="bi bi-clock"></i> 1:00-2:00pm
+        <i class="bi bi-calendar-event"></i>{{ @item_task_list.task_due_date }}<br>
+        <i class="bi bi-clock"></i> <!-- add time here if available -->
       </small>
     </div>
     <span class="important lead flex-shrink-0 align-self-start"><i class="bi bi-star"></i></span>

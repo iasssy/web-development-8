@@ -41,6 +41,8 @@ Day 8 (2024-7-18)
     - almost finished dashboard page, added JavaScript links to footer, but couldn't change header background, 
     - corrected links on the button on hero banner on homepage, added input names to sign up and log in
     - changed f3 to protected and removed from functions, added signupSave route
+    - added config.ini, access.ini files, added ListController, classes Model, Lists, Tasks, User, 
+    - created lists.html and tasks.html (the last one is still not functional)
 
 
     

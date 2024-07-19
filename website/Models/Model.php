@@ -27,23 +27,38 @@ class Model extends DB\SQL\Mapper {
           $db_user,
           $db_pass
       );
-      echo "Database connection successful.";
-  } catch (Exception $e) {
-      echo "Database connection failed: " . $e->getMessage();
-  }
-      // creates mapper of given table
-      parent::__construct($this->db, $table);
+      // echo "Database connection successful.";
+      } catch (Exception $e) {
+          // echo "Database connection failed: " . $e->getMessage();
+      }
+          // creates mapper of given table
+          parent::__construct($this->db, $table);
 
   }
   
-    /**
-     * Fetch all the rows in the table
-     * @return Object database results
-     */
-    public function fetchAll(){
-      $this->load(); // SELECT * FROM `model table`
-      return $this->query;
+  /**
+   * Fetch all the rows in the table
+   * @return Object database results
+   */
+  public function fetchAll(){
+    $this->load(); // SELECT * FROM `model table`
+    return $this->query;
   }
+
+  /**
+   * Insert a new row into the table using POST data
+   * @return int Last inserted ID
+   */
+  public function addItem(){
+    $this->copyfrom('POST');
+    $this->save();
+
+    return $this->id; // last insersted id
+  }
+
   
+  
+
+
 
 }

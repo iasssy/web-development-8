@@ -68,7 +68,7 @@
                   <hr class="w-100 border border-secondary border-1">
                 
                   <small class="text-uppercase text-secondary ms-lg-3 mx-auto mx-lg-0">My lists</small>
-                  <?php echo $this->render('{{ @BASE }}/list',NULL,get_defined_vars(),0); ?>
+                  <?php echo $this->render('tasks/lists.html',NULL,get_defined_vars(),0); ?>
                   
               </ul>
           </div>
@@ -84,13 +84,13 @@
             <!-- header part with Task list name and date-->
             <div class="row mb-3">
               <div class="col-md-8">
-                <h3 class="mb-2 text-secondary float-start">
+                <h3 class="mb-2 text-secondary float-start lead">
                   <i class="bi bi-speedometer2"></i>                
-                  <span class="lead">Dashboard</span>
+                  <span class="">Dashboard</span>
                   
                 </h3>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 text-center">
                 <!-- Just date
                 <p class=""><?= (Base::instance()->format('{0,date}' , time())) ?></p>
                 -->
@@ -99,7 +99,11 @@
                 <p class=""><?= (date('D F j, Y, g:i a', time())) ?></p>
                 -->
 
-                <p class="lead"><?= (date('F j, Y, g:i a', time())) ?></p>
+                <!-- showing in format July 19, 2024, 7:29 am
+                <p class="lead"><?= (date('F j, Y, g:i a', time())) ?></p>-->
+                <small class="lead fs-4 border border-secondary p-1"><?= (date('F j', time())) ?></small>
+                <br>
+                <small class="lead"><?= (date('Y', time())) ?></small>
 
                 <!-- showing just tine
                 <p id="selector"><?= (Base::instance()->format('{0,time} ',time())) ?></p>
@@ -125,8 +129,8 @@
               <h3 class="lead text-uppercase ms-3 my-3">Tasks</h3>
                 
                 
-                <label class="list-group-item d-flex gap-3 bg-body-tertiary py-3">
-                  <input class="form-check-input form-check-input-placeholder bg-body-tertiary flex-shrink-0 pe-none" disabled="" type="checkbox" value="" style="font-size: 1.375em;">
+                <label class="list-group-item d-flex gap-3 bg-body-tertiary py-3" id="createTask"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="bi bi-plus-lg" style="font-size: 1.375em;"></i>
                   <span class="pt-1 form-checked-content">
                     <span class="w-100">Add new task...</span>
                   </span>
@@ -187,27 +191,27 @@
 
 
 
-            
+            <!-- Statistics to the right of tasks-->
             <div class="col-md-4">
-              <h3 class="lead text-uppercase ms-3 my-3">Quick Stats</h3>
+              <h3 class="lead text-uppercase ms-3 my-3">Quick Stats for the list</h3>
               <ol class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-start py-3">
                   <div class="ms-2 me-auto">
                     <div class="">Total</div>
                   </div>
-                  <span class="badge text-bg-secondary rounded-pill">12</span>
+                  <span class="badge text-bg-secondary rounded-pill">4</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start py-3">
                   <div class="ms-2 me-auto">
                     <div class="">Completed</div>
                   </div>
-                  <span class="badge text-bg-secondary rounded-pill">2</span>
+                  <span class="badge text-bg-secondary rounded-pill">0</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start py-3">
                   <div class="ms-2 me-auto">
                     <div class="">Important</div>
                   </div>
-                  <span class="badge text-bg-secondary rounded-pill">5</span>
+                  <span class="badge text-bg-secondary rounded-pill">1</span>
                 </li>
               </ol>
             </div>
@@ -224,6 +228,42 @@
       </div>
       
       <!-- end of right side content -->
+
+      <!-- MODALS-->
+       
+      <!-- modal for creating task -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Creating a new task</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">               
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="title">
+                  <label for="floatingNameInput">Task title</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInput" placeholder="" name="description">
+                  <label for="floatingInput">Task description</label>
+                </div>
+                <small>Due date</small>
+                <br>
+                <!-- Date and time pickers-->
+                <div class="container-fluid m-0 p-0 mb-4">
+                  <input class="form-control" type="datetime-local">
+                </div>
+              
+
+                <button type="submit" class="btn btn-primary px-4 rounded-pill">Save</button>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
   </div>
 </div>

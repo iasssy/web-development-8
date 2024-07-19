@@ -18,11 +18,12 @@ class ListsController extends Controller{
 public function allList(){
     
     // fetch all the rows
-    $items = $this->model->fetchAllList();
+    $itemsList = $this->model->fetchAllList();
 
-    $this->f3->set('results', $items); 
-    echo '<pre>';
-     var_dump($this->f3->get('results')); // Debugging statement
+    $this->f3->set('resultsLists', $itemsList); 
+   /* echo '<pre>';
+    var_dump($this->f3->get('results')); // debugging
+    */
     echo $this->template->render("tasks/lists.html");
 }
 
