@@ -44,5 +44,14 @@ Day 8 (2024-7-18)
     - added config.ini, access.ini files, added ListController, classes Model, Lists, Tasks, User, 
     - created lists.html and tasks.html (the last one is still not functional)
 
+Day 9 (2024-7-19)
+    - added ContactUsController, corrected dashboard rendering
+    - created taskController, TaskListViewController for database View "tasklistview" 
+
+
+Day 10 (2024-7-20)
+    - added contact us form proper validation with additional functions and repopulation of data
+    - sign up page form also works to save to database (still needs validations)
+
 
     

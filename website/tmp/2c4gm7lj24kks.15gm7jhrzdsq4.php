@@ -1,7 +1,5 @@
 <?php echo $this->render('includes/header.html',NULL,get_defined_vars(),0); ?>
 
-
-
   <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
       <div class="col-lg-7 text-center text-lg-start">
@@ -16,21 +14,25 @@
             </h2>
           </div>
           
-        <?php if ($msg): ?><!-- if message found then show them message -->
-          <p class='messages'><?= ($msg) ?></p>
-        <?php endif; ?>
+          <?php if ($msg): ?><!-- if message found then show them message -->
+            <p class='messages'><?= ($msg) ?></p>
+          <?php endif; ?>
+          <?php if ($errors): ?>
+            <p class="error-messages"><?= (implode("<br>", $errors)) ?></p>
+          <?php endif; ?>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="username">
+            <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="username" value="<?= ($item['username']  ?? '') ?>">
             <label for="floatingNameInput">Name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="<?= ($item['email']  ?? '') ?>">
             <label for="floatingInput">Email address</label>
           </div>
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="comment" style="height: 100px"></textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="comment" style="height: 100px"><?= ($item['comment']  ?? '') ?></textarea>
             <label for="floatingTextarea2">Comments</label>
           </div>
+          
           <button class="btn btn-primary px-4 btn-lg rounded-pill my-4" type="submit">Send</button>
         </form>
       </div>
