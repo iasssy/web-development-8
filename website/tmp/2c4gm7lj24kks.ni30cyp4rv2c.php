@@ -2,15 +2,18 @@
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
         <div class="col-md-10 mx-auto col-lg-6">
-            <form action="" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+            <form action="<?= ($BASE) ?><?= (Base::instance()->alias('signup')) ?>" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
                 <div class="py-5 text-center">
                     <h2>
                         <span class="">Sign up to </span>
                         <img class="" src="images/Task-it-logo.svg" alt="" height="40">
                     </h2>
                 </div>
-                <?php if ($errors): ?>
-                  <p class="messages"><?= (implode("<br>", $errors)) ?></p>
+                <?php if ($msg): ?>
+                    <p class='messages'><?= ($msg) ?></p>
+                <?php endif; ?>
+                <?php if ($errors && !empty($errors)): ?>
+                    <p class='messages'><?= ($errors | implode('<br>')) ?></p>
                 <?php endif; ?>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="username">

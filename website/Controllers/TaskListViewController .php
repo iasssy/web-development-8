@@ -14,7 +14,7 @@ class TaskListView extends Model {
 
   /**
    * Fetching tasks by list name
-   * @param String list name
+   * @param string list name
    */
   public function tasksByListName($f3, $params) {
     // Fetch tasks where list name is passed as a parameter

@@ -12,7 +12,4 @@ class TaskController extends Controller{
     $this->taskModel = new Task(); // establish database connection 
   }
 
-  public function addTask(){
-    $this->taskModel->addItem();
-  }
 }

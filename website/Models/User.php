@@ -13,14 +13,7 @@ class User extends Model{
     
   }
 
+  
 
-  /**
-   * Fetch all the rows in the tables
-   * @return Object database results
-   */
-  public function fetchAll(){
-    $this->load(); // SELECT * from users
-    return $this->query;
-  }
 
 }
