@@ -9,18 +9,22 @@
                         <img class="" src="images/Task-it-logo.svg" alt="" height="40">
                     </h2>
                 </div>
-                <?php if ($msg): ?>
+
+                <?php if ($msg): ?><!-- if message found then show them message -->
                     <p class='messages'><?= ($msg) ?></p>
-                <?php endif; ?>
-                <?php if ($errors && !empty($errors)): ?>
-                    <p class='messages'><?= ($errors | implode('<br>')) ?></p>
-                <?php endif; ?>
+                  <?php endif; ?>
+                  <?php if ($errors): ?>
+                    <?php foreach (($errors?:[]) as $error): ?>
+                      <p class="error-messages"><?= ($error) ?></p>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
+
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="username">
+                    <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="username" value="<?= ($item['username']  ?? '') ?>">
                     <label for="floatingNameInput">Name *</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="<?= ($item['email']  ?? '') ?>">
                     <label for="floatingInput">Email *</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -29,7 +33,7 @@
                 </div>
                 <div class="checkbox mb-3">
                     <label>
-                        <input type="checkbox" value="remember-me"> Remember me
+                        <input type="checkbox" value="<?= ($item['remember_me']  ?? '') ?>"> Remember me
                     </label>
                 </div>
                 <button class="btn btn-primary btn-lg px-4 rounded-pill" type="submit">Sign up</button>

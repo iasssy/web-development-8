@@ -2,6 +2,25 @@
 
 // handles all pages
 
+/*
+include 'Views/includes/functions.php'; 
+// Check if 'remember_me' cookie exists and print its value
+if (isset($_COOKIE['remember_me'])) {
+    echo "Cookie 'remember_me': " . htmlspecialchars($_COOKIE['remember_me']) . "<br>";
+} else {
+    echo "Cookie 'remember_me': Not set<br>";
+}
+
+// Start the session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check if session variables are set and print their values
+echo "Session 'userEmail': " . (isset($_SESSION['userEmail']) ? htmlspecialchars($_SESSION['userEmail']) : 'Not set') . "<br>";
+echo "Session 'userName': " . (isset($_SESSION['userName']) ? htmlspecialchars($_SESSION['userName']) : 'Not set') . "<br>";
+*/
+
 class PagesController extends Controller{
 
     private $listsModel; // table "lists" from database
@@ -15,6 +34,9 @@ class PagesController extends Controller{
       $this->taskListViewModel = new TaskListView(); // establish database connection with table "lists
       $this->contactModel = new ContactUs();
       $this->userModel = new User();
+
+       // Check the 'Remember me' cookie
+      // checkRememberMe();
 
     }
 
@@ -91,6 +113,10 @@ class PagesController extends Controller{
         // Get any success or error messages from F3
         $msg = $this->f3->get('msg') ?? '';
         $this->f3->set('msg', $msg);
+
+        // Set POST data for populating the form
+        $this->f3->set('item', $this->f3->get('POST'));
+        
         $this->setPageTitle('Sign up');
         $this->f3->set('pageDecription', 'Sign up to TASK-IT to access your personalized task management dashboard.');    
         echo $this->template->render('sign-up.html');
@@ -103,24 +129,91 @@ class PagesController extends Controller{
      * @param Base $f3 The Fat-Free Framework instance
      */
     function signupSave() {
+        
+        // array of errors
+        $errors = [];
 
         // Validate and process form data
         if ($this->inputTrimAndCheckIfEmpty()) {
             // handle form errors
-            $this->f3->set('msg', 'All fields are required.');
-
+            $errors[] = 'All fields are required.';
 
         } else {            
-            // TODO: validation of each field? 
+            
+            // validating email - correct format
+            $email=trim($this->f3->get('POST.email'));
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                array_push($errors, "Invalid email format.");
+            }
 
             // check if the email already exists in database
+            $item = $this->userModel->fetchByName('users','email',$email);
 
+            // checking if email exist
+            if ($item){
+                array_push($errors, "Email is already exists in database.");
+            } else {
+                        
+                // validating password
+                 $password=trim($this->f3->get('POST.password'));
 
-            // Save the data to the database
-            $this->userModel->addItem();
+                // validate password length
+                if (!$this->validateLength($password, 6, PHP_INT_MAX)) {
+                    array_push($errors, "Password must be at least 6 characters long.");
+                } else {
+                    // additional password validations
+                    if (!preg_match('/[A-Z]/', $password)) {
+                        array_push($errors, "Password must include at least one uppercase letter.");
+                    }
+                    if (!preg_match('/[a-z]/', $password)) {
+                        array_push($errors, "Password must include at least one lowercase letter.");
+                    }
+                    if (!preg_match('/[0-9]/', $password)) {
+                        array_push($errors, "Password must include at least one number.");
+                    }
+                    if (!preg_match('/[\W_]/', $password)) {
+                        array_push($errors, "Password must include at least one special character.");
+                    }
+                }                
+            }    
+        }
 
-            // Set a success message
+        // checking if there are errors
+        if (!empty($errors)) {
+            $this->f3->set('errors', $errors);
+        } else {
+            // Hash the password before saving
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            // saving the data to the database
+            $this->userModel->addItem([
+                'username' => trim($this->f3->get('POST.username')),
+                'email' => $email,
+                'password' => $hashedPassword
+            ]);
+
+            // setting a success message
             $this->f3->set('msg', 'You are successfully signed up!');
+            
+
+            // clearing the form fields
+            $this->f3->clear('POST'); 
+
+
+            $rememberMe = $this->f3->get('POST.remember_me') == '1';
+            // printing the "Remember me" value for debugging
+           // echo "Remember me value: " . htmlspecialchars($rememberMe) . "<br>";
+
+            // if "Remember me" is checked
+            if (!empty($rememberMe) && $rememberMe == '1') {
+                //setting a cookie to remember the user
+                setcookie('remember_me', $email, time() + (86400 * 30), "/"); // cookie expires in 30 days
+            } else {
+                // deleting cookie "Remember me" if it is not checked
+                if (isset($_COOKIE['remember_me'])) {
+                    setcookie('remember_me', '', time() - 3600, "/"); // Delete the cookie
+                }
+            }
         }
 
         // Render the form page with the message
@@ -138,8 +231,7 @@ class PagesController extends Controller{
         $this->f3->set('msg', $msg);
 
         // Set POST data for populating the form
-        $postData = $this->f3->get('POST');
-        $this->f3->set('item', $postData);
+        $this->f3->set('item', $this->f3->get('POST'));
 
         $this->setPageTitle('Contact us');
         $this->f3->set('pageDecription', 'Contact us TASK-IT if you have any questions or suggestions.');    
@@ -151,11 +243,6 @@ class PagesController extends Controller{
      */
     public function contactSave() {
 
-        // trim POST data
-        $username = trim($this->f3->get('POST.username') ?? '');
-        $email = trim($this->f3->get('POST.email') ?? '');
-        $comment = trim($this->f3->get('POST.comment') ?? '');
-
         $errors = [];
 
         // checking if any fields are empty
@@ -163,12 +250,13 @@ class PagesController extends Controller{
             $errors[] = 'All fields are required.';
 
         } else {
+
             // validating email - correct format
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            if (!filter_var(trim($this->f3->get('POST.email')), FILTER_VALIDATE_EMAIL)) {
                 array_push($errors, "Invalid email format.");
             }
 
-            if (!$this->validateLength($comment, 10, 500)) {
+            if (!$this->validateLength(trim($this->f3->get('POST.comment')), 10, 500)) {
                 array_push($errors, "Your comment must be between 10 and 500 characters.");
             }
             
@@ -190,6 +278,7 @@ class PagesController extends Controller{
 
             // clearing the form fields
             $this->f3->clear('POST'); 
+
 
         }
         // rendering the form page with the message

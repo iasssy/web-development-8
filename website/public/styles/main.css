@@ -37,7 +37,7 @@ h2, h3, h4, h5, h6 {
 
 .messages::before{
   /*content: '\0270D'*/
-  content: '\02705';
+  content: '\2B50';
 }
 
 .error-messages::before {
