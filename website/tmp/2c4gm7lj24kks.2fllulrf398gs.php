@@ -265,7 +265,6 @@
         </div>
       </div>
 
-  </div>
 </div>
 
 <?php echo $this->render('includes/footer.html',NULL,get_defined_vars(),0); ?> 

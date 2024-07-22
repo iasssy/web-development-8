@@ -48,10 +48,18 @@ Day 9 (2024-7-19)
     - added ContactUsController, corrected dashboard rendering
     - created taskController, TaskListViewController for database View "tasklistview" 
 
-
 Day 10 (2024-7-20)
     - added contact us form proper validation with additional functions and repopulation of data
     - sign up page form also works to save to database (still needs validations)
 
+Day 11 (2024-7-22)
+    - fixed function fetchByName by including tableName
+    - corrected the way the errors are shown
+    - worked on sign up page and function checkRememberMe (for setting the cookie with automatic user log in)
+    - fixed access ini file, and added it to GitHub (with 'vendor" and "temp" folders)
+    - added session start and checking it when rendering dashboard, finished log in and sign up pages validations (also did log out)
+    - started to work on dashboard, fixed footer on small pages to go to bottom
 
+
+TODO: checkbox "Remember me" functionality in both log in and sign up
     

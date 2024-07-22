@@ -15,7 +15,7 @@ class Model extends DB\SQL\Mapper {
     
     $f3 = Base::instance(); // load the framework
 
-
+    $db_host = $f3->get('DBHOST');
     $db_name = $f3->get('DBNAME');
     $db_user = $f3->get('DBUSER');
     $db_pass = $f3->get("DBPASS");
@@ -24,7 +24,7 @@ class Model extends DB\SQL\Mapper {
     // connect to the database
     try {
       $this->db = new DB\SQL(
-          "mysql:host=localhost;dbname={$db_name};port={$db_port}",
+          "mysql:host={$db_host};dbname={$db_name};port={$db_port}",
           $db_user,
           $db_pass
       );
@@ -32,10 +32,23 @@ class Model extends DB\SQL\Mapper {
       } catch (Exception $e) {
           // echo "Database connection failed: " . $e->getMessage();
       }
-          // creates mapper of given table
-          parent::__construct($this->db, $table);
+
+      $this->table = $table;
+
+      // creates mapper of given table
+      parent::__construct($this->db, $table);
 
   }
+
+  /** TODO: didn't work
+     * Get the table name
+     * @return string Table name
+     */
+    protected function getTable() {
+      return $this->table;
+  }
+
+  
   
 
   /**
@@ -95,6 +108,19 @@ class Model extends DB\SQL\Mapper {
       $this->save();
 
       return $this->id; // last insersted id
+  }
+
+  /**
+   * Insert a new row into the table using provided data
+   * 
+   * @param array $data Associative array of user data
+   * @return int Last inserted ID
+   */
+  public function addItemWithData($data) {
+    $this->copyfrom($data);
+    $this->save();
+
+    return $this->id; // Last inserted ID
   }
 
   /**
