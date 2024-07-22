@@ -1,0 +1,8 @@
+# Sensitive data
+access.ini
+
+# Vendor directory
+/vendor/
+
+# Temporary files
+/tmp/

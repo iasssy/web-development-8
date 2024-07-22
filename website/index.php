@@ -22,7 +22,12 @@ $f3->route('GET @home: /', 'PagesController->homepage');
 $f3->route('GET @dashboard: /dashboard', 'PagesController->dashboard');
 // TODO: list name or 1st list in order $f3->route('GET @dashboard: /dashboard/list/@list_name', 'PagesController->dashboard');
 
+// Log in hadling
 $f3->route('GET @login: /login', 'PagesController->login');
+$f3->route('POST @login: /login', 'PagesController->loginProcess');
+
+// Log out 
+$f3->route('GET @logout: /logout', 'PagesController->logout');
 
 // GET request to display the sign-up form
 $f3->route('GET @signup: /signup', 'PagesController->signup');  
