@@ -56,21 +56,23 @@ class Model extends DB\SQL\Mapper {
       return $this->findone(['id=?', $id]);
   }
 
+  
   /**
-   * Fetch a single row from the table based on a dynamic column name and value
-   * @param string $columnName The name of the column to filter by
-   * @param mixed $value the value to match in the diven column
-   * @return Object fetched database result
-   * @throws InvalidArgumentException if the column name is invalid
-   */
-  public function fetchByName($columnName, $value) {
+  * Fetch a single row from the table based on a dynamic column name and value
+  * @param string $table the table name
+  * @param string $columnName The name of the column to filter by
+  * @param string $columnValue the value to match in the diven column
+  * @return Object fetched database result
+  * @throws InvalidArgumentException if the column name is invalid
+  */
+  public function fetchByName($table, $columnName, $columnValue) {
     // validate column name
-    if (!$this->isValidColumn($columnName)) {
+    if (!$this->isValidColumn($table,$columnName)) {
         throw new InvalidArgumentException("Invalid column name: $columnName");
     }
 
     // Fetch the record by dynamic column name and value
-    return $this->findone([$columnName . '=?', $value]);
+    return $this->findone([$columnName . '=?', $columnValue]);
   }
 
 
@@ -109,12 +111,13 @@ class Model extends DB\SQL\Mapper {
   
   /**
   * Validate if the column name exists in the table
+  * @param string $table the table name
   * @param string $columnName The column name
   * @return boolean true if valid, false otherwise
   */
-  private function isValidColumn($columnName) {
+  private function isValidColumn($table, $columnName) {
     // getting the list of columns for the table
-    $columns = $this->getTableColumns($this);
+    $columns = $this->getTableColumns($table);
     
     // checking if the column name is in the list of columns
     return in_array($columnName, $columns);
@@ -123,13 +126,24 @@ class Model extends DB\SQL\Mapper {
 
   /**
   * Retrieve the list of columns for the table
-  * @return array column names array
+  * @param string $table the table name
+  * @return array column names array  
+  * @throws RuntimeException if the table name is invalid
   */
-  private function getTableColumns() {
+  private function getTableColumns($table) {
     $columns = [];
+
+
+    // Debugging: Output the table name to ensure it's set
+    error_log("Table Name: " . $table);
+
+    // checking if $this->tableName is set correctly
+    if (empty($table)) {
+      throw new RuntimeException("Table name is not set.");
+    }
     
     // execute raw SQL query to show all the table columns 
-    $result = $this->db->exec("SHOW COLUMNS FROM " . $this->db->quote($this));
+    $result = $this->db->exec("SHOW COLUMNS FROM " . $table);
           
     // fetch column names
     foreach ($result as $row) {

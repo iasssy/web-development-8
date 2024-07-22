@@ -18,8 +18,11 @@
             <p class='messages'><?= ($msg) ?></p>
           <?php endif; ?>
           <?php if ($errors): ?>
-            <p class="error-messages"><?= (implode("<br>", $errors)) ?></p>
+            <?php foreach (($errors?:[]) as $error): ?>
+              <p class="error-messages"><?= ($error) ?></p>
+            <?php endforeach; ?>
           <?php endif; ?>
+          
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="username" value="<?= ($item['username']  ?? '') ?>">
             <label for="floatingNameInput">Name</label>

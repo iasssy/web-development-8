@@ -3,6 +3,7 @@
 
 // for debugging if file is included
 echo 'functions.php is included';
+
 /**
  * Checks the 'Remember me' cookie and handles user login.
  */

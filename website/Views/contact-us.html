@@ -18,8 +18,11 @@
             <p class='messages'>{{ @msg }}</p>
           </check>
           <check if="{{@errors}}">
-            <p class="error-messages">{{ "<br>", @errors | implode }}</p>
+            <repeat group="{{@errors}}" value="{{@error}}">
+              <p class="error-messages">{{ @error }}</p>
+            </repeat>
           </check>
+          
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="username" value="{{ @item['username']  ?? '' }}">
             <label for="floatingNameInput">Name</label>
