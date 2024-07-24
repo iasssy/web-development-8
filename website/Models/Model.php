@@ -6,6 +6,7 @@ class Model extends DB\SQL\Mapper {
 
   
   protected $db; // database connection
+  protected $table; // table name
 
   /**
    * Parent class constructor
@@ -47,9 +48,7 @@ class Model extends DB\SQL\Mapper {
     protected function getTable() {
       return $this->table;
   }
-
-  
-  
+ 
 
   /**
    * Fetch all the rows in the table
@@ -67,6 +66,14 @@ class Model extends DB\SQL\Mapper {
    */
   public function fetchById( $id ){
       return $this->findone(['id=?', $id]);
+  }
+
+   /**
+   * TODO description
+   */
+  public function fetchTableByColumnValue($table, $field, $value) {
+    $query = "SELECT * FROM $table WHERE $field = ?";
+    return $this->db->exec($query, $value);
   }
 
   

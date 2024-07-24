@@ -60,6 +60,13 @@ Day 11 (2024-7-22)
     - added session start and checking it when rendering dashboard, finished log in and sign up pages validations (also did log out)
     - started to work on dashboard, fixed footer on small pages to go to bottom
 
+Day 12 (2024-7-22) 
+    - created functions addList and addListSave, showListByIdWithTasks
+    - in class Model created fetchTableByColumnValue
+    - created ajaxes for rendering form and submitting of new List, and for rendering left side list upon adding a new list
+    - added text-overflow: ellipsis for the list to be shown partially on smaller devices
+    - also showing user name and avatar if it is in database 
+
 
 TODO: checkbox "Remember me" functionality in both log in and sign up
     

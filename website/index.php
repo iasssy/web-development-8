@@ -45,14 +45,27 @@ $f3->route('POST @contact: /contact', 'PagesController->contactSave');
 // all the lists
 $f3->route('GET @lists: /list', 'ListsController->allList');
 
-// fetching tasks by list name
-$f3->route('GET @tasksByListName: /tasks/@list_name', 'TaskListViewController->tasksByListName');
+// show list by id
+$f3->route('GET @showListByIdWithTasks: /dashboard/list/@id', 'TaskListViewController->showListByIdWithTasks');
 
+// show important tasks  
+// $f3->route('GET @importantTasks: dashboard/task/important', 'TaskController->importantTasks'); // or TaskListViewController
+
+// create/add a new list
+$f3->route('GET @addList: /list/add', 'ListsController->addList');
+$f3->route('POST @addList: /list/add', 'ListsController->addListSave');
+
+// modify (delete or update)
+$f3->route('GET @modifyList: /list/modify', 'ListsController->modifyList');
 
 // TASKS
 
 // add a new task - save form data  
 // $f3->route('POST @addTask: /task', 'TaskController->addTask');
+
+// fetching tasks by list name
+$f3->route('GET @tasksByListName: /tasks/@list_name', 'TaskListViewController->tasksByListName');
+
 
 $f3->run();
 

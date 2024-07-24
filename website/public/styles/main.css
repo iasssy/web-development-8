@@ -19,7 +19,6 @@ h2, h3, h4, h5, h6 {
   border-color: #9c6308;
 }
 
-/* Override specific Bootstrap styles if needed */
 .nav-pills .nav-link, .nav-pills .nav-item {
   color:#ab5e07;
 }
@@ -44,7 +43,39 @@ h2, h3, h4, h5, h6 {
   color: #dc3545; /* Bootstrap's text-danger color */
 }
 
-
 #createTask{
   cursor: pointer;
+}
+
+/* Base styles for title text */
+.title-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;  
+  width: 9em;   
+  text-overflow: ellipsis;
+}
+.title-text::before {
+  content: attr(data-short); /* Use short version */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* hide the full title on small screens */
+@media (max-width: 575.98px) { 
+  .title-text {
+    position: relative;
+    display: inline-block;
+    width: 3em; /* width of 3 characters */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  
 }

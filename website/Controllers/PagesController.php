@@ -2,25 +2,6 @@
 
 // handles all pages
 
-    /*
-    include 'Views/includes/functions.php'; 
-    // Check if 'remember_me' cookie exists and print its value
-    if (isset($_COOKIE['remember_me'])) {
-        echo "Cookie 'remember_me': " . htmlspecialchars($_COOKIE['remember_me']) . "<br>";
-    } else {
-        echo "Cookie 'remember_me': Not set<br>";
-    }
-
-    // Start the session if not already started
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-
-    // Check if session variables are set and print their values
-    echo "Session 'userEmail': " . (isset($_SESSION['userEmail']) ? htmlspecialchars($_SESSION['userEmail']) : 'Not set') . "<br>";
-    echo "Session 'userName': " . (isset($_SESSION['userName']) ? htmlspecialchars($_SESSION['userName']) : 'Not set') . "<br>";
-    */
-
 class PagesController extends Controller{
 
     private $listsModel; // table "lists" from database
@@ -86,7 +67,7 @@ class PagesController extends Controller{
 
                 // checking if email exist
                 if ($user){
-                    array_push($errors, "Email is already exists in database.");
+                    array_push($errors, "Email already exists in database.");
                 }
             }
                         
@@ -214,6 +195,7 @@ class PagesController extends Controller{
                     } else {
                          // successful login
                         session_start();
+                        $_SESSION['user_id'] = $user['id'];
                         $_SESSION['userEmail'] = $user['email'];
                         $_SESSION['userName'] = $user['username']; 
 
@@ -335,56 +317,28 @@ class PagesController extends Controller{
 
         if (!$this->isLoggedIn()) {
             // Redirect to login page if not logged in
-            $this->f3->reroute('/login');
+            $this->f3->reroute('@login');
         }
 
-        $loggedUser = $this->userModel->fetchByName('users', 'email', $_SESSION['userEmail'] );
+        // getting user_id from session
+        $user_id = $this->f3->get('SESSION.user_id');
 
-        // fetching the lists data for the lists for side bar
-        $resultsLists = $this->listsModel->fetchAllList();
+        // Fetch user details
+        $user = $this->userModel->fetchById($user_id);
+        $this->f3->set('user', $user);
+
+        // fetching the lists data for the lists for side bar (for the logged-in user)
+        $resultsLists = $this->listsModel->fetchAllListsByUserId($user_id);
         $this->f3->set('resultsLists', $resultsLists);
 
         $this->setPageTitle('Dashboard');
         $this->f3->set('pageDecription', 'Manage your tasks efficiently with TASK-IT intuitive Dashboard. Stay organized and focused on your goals with our powerful task management features.');   
         echo $this->template->render('dashboard.html');
     }
-    /*  with View TaskListView 
-    function dashboard($f3, $params){  
-
-        // fetching tasks from specified list - from View TaskListView to show in right side content
-        //TODO: default - maybe order of lists, the first one in order 
-
-        // Get list name from parameters
-        $listName = $params['list_name'];
-        $tasks_by_list = $this->taskListViewModel->fetchTasksByListName($listName);
-        $f3->set('tasks_by_list', $tasks_by_list); 
-        $f3->set('list_name', $listName);
-
-
-        // fetching the data for the lists for side bar
-        $resultsLists = $this->listsModel->fetchAllList();
-        $this->f3->set('resultsLists', $resultsLists);
-
-        $this->setPageTitle('Dashboard');
-        $this->f3->set('pageDecription', 'Manage your tasks efficiently with TASK-IT intuitive Dashboard. Stay organized and focused on your goals with our powerful task management features.');   
-        echo $this->template->render('dashboard.html');
-    }
-*/
-
 
 
     /**
-   * Check that string is withing specified length
-    * @param string $strToCheck The string to be checked
-    * @param int $minLength Minimum length allowed of the string to check
-    * @param int $maxLength Maximum length allowed of the string to check
-    * @return bool TRUE is the string is between the min and max inclusive
-    */
-    public function validateLength($strToCheck, $minLength, $maxLength) {  
-        return (strlen($strToCheck) >= $minLength && strlen($strToCheck) <= $maxLength);
-    }
-
-    /**
+     * TODO: put into Controller parent class
      * Function to get all POST input values, trim them, and check if any POST variables are empty
      *
      * @return boolean true if any input is empty, false otherwise

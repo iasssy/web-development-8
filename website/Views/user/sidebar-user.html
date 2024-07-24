@@ -1,0 +1,34 @@
+
+<a href="#" class="d-flex align-items-center text-decoration-none  text-secondary dropdown-toggle ms-lg-3 mx-auto mx-lg-0" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+  <check if="{{ @user.avatar_image }}">
+    <true>
+        <img src="{{ @user.avatar_image }}" alt="" height="50" class="rounded-circle">
+    </true>
+    <false>
+      <span>
+          <i class="bi bi-person-circle fs-2"></i>
+      </span>
+    </false>
+  </check>  
+<span class=" text-secondary d-none d-sm-inline ms-3 me-1">{{ @user.username }}</span>
+</a>
+<ul class="dropdown-menu py-3"  aria-labelledby="dropdownUser">
+  <li>
+    {* TODO:  Edit user name and avatar *}
+    <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+      <i class="bi bi-pen"></i>Edit name</a>
+  <li>
+    <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+      <i class="bi bi-person"></i>
+      Change avatar
+    </a>
+  <li>
+    <hr class="dropdown-divider">
+  </li>
+  <li>
+    <a class="dropdown-item d-flex gap-2 align-items-center" href="{{ @BASE }}{{ 'logout' | alias }}">
+      <i class="bi bi-box-arrow-right"></i>
+      Log out
+    </a>
+  </li>
+</ul>

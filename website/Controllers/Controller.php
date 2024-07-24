@@ -4,12 +4,8 @@ class Controller{
 
   // Instance of the Fat-Free framework object, to be able to use it in any functions without using it as function argument
   protected $f3;
-  /* TODO: doesn't work for me in PagesController $this->template->reder('index.html');*/
   protected $template; 
   
-
-
-
    /**
    * Constructor method
    *
@@ -26,14 +22,6 @@ class Controller{
     // array of errors
     $f3->set('errors', null);
 
-    /* didn't work
-    // date and time format
-    $f3->set('dateFormat', 'Y-m-d');
-    $f3->set('timeFormat', 'H:i:s');
-    */
-    
-    /* 
-    TODO: doesn't work for me $this->template->reder('index.html') */
     $this->template = new Template;
    
   }
@@ -60,6 +48,43 @@ class Controller{
 
     $this->f3->set('pageTitle', $newTitle);
   }
+
+    /**
+   * Check that string is withing specified length
+    * @param string $strToCheck The string to be checked
+    * @param int $minLength Minimum length allowed of the string to check
+    * @param int $maxLength Maximum length allowed of the string to check
+    * @return bool TRUE is the string is between the min and max inclusive
+    */
+    public function validateLength($strToCheck, $minLength, $maxLength) {  
+      return (strlen($strToCheck) >= $minLength && strlen($strToCheck) <= $maxLength);
+  }
+
+
+  
+/** 
+ * TODO: doesn't work for now
+ * Checks the 'Remember me' cookie and handles user login.
+ */
+public function checkRememberMe() {
+  if (isset($_COOKIE['remember_me'])) {
+      $email = $_COOKIE['remember_me'];
+
+      // Fetch user by email from database
+      // Assuming you have a User model class
+      $userModel = new User(); 
+      $userEmail = $userModel->fetchByName('users', 'email', $email);
+      $userName = $userModel->fetchByName('users', 'email', $email);
+
+      if ($userEmail) {
+          // logging in the user automatically
+          session_start();
+          $_SESSION['userEmail'] = $userEmail;
+          $_SESSION['userName'] = $userName;
+      }
+  }
+}
+
 
   // TODO: to make same thing with meta description - set up default and append if it is already set
 }
