@@ -76,6 +76,15 @@ class Model extends DB\SQL\Mapper {
     return $this->db->exec($query, $value);
   }
 
+   /**
+   * TODO description
+   */
+  public function fetchTableByColumnValueForUser($user_id, $table, $field, $value) {
+    $query = "SELECT * FROM $table WHERE user_id=? AND $field = ?";
+    return $this->db->exec($query, [$user_id, $value]);
+  }
+
+
   
   /**
   * Fetch a single row from the table based on a dynamic column name and value

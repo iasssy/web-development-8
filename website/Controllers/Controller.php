@@ -86,5 +86,36 @@ public function checkRememberMe() {
 }
 
 
-  // TODO: to make same thing with meta description - set up default and append if it is already set
+// TODO: to make same thing with meta description - set up default and append if it is already set
+
+
+/**
+ * Function to get all POST input values, trim them, and check if any POST variables are empty
+ *
+ * @return boolean true if any input is empty, false otherwise
+ */
+public function inputTrimAndCheckIfEmpty() {
+  foreach ($this->f3->get('POST') as $key => $value) {
+      if (is_string( $value)){
+          $value = trim($value ?? '');
+      } 
+      if ($value === '') {
+          return true;
+      }
+  }
+  return false;
+}
+
+/**
+ * Checks if the user is logged in
+ * 
+ * @return bool True if logged in, false otherwise
+ */
+public function isLoggedIn() {
+  $session = $this->f3->get('SESSION');
+  
+  return isset($_SESSION['userEmail'] );
+}
+ 
+
 }

@@ -2,7 +2,7 @@
 access.ini
 
 # Vendor directory
-/vendor
+vendor/
 
 # Temporary files
-/tmp
+tmp/

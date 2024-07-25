@@ -43,28 +43,30 @@ $f3->route('POST @contact: /contact', 'PagesController->contactSave');
 // LISTS
 
 // all the lists
-$f3->route('GET @lists: /list', 'ListsController->allList');
+$f3->route('GET @lists: /list', 'TaskListViewController->allList');
 
 // show list by id
-$f3->route('GET @showListByIdWithTasks: /dashboard/list/@id', 'TaskListViewController->showListByIdWithTasks');
+$f3->route('GET @showListByIdWithTasks: /list/@id', 'TaskListViewController->showListByIdWithTasks');
 
 // show important tasks  
-// $f3->route('GET @importantTasks: dashboard/task/important', 'TaskController->importantTasks'); // or TaskListViewController
+// $f3->route('GET @importantTasks: dashboard/task/important', 'TaskListViewController->importantTasks'); 
 
 // create/add a new list
-$f3->route('GET @addList: /list/add', 'ListsController->addList');
-$f3->route('POST @addList: /list/add', 'ListsController->addListSave');
+$f3->route('GET @addList: /list/add', 'TaskListViewController->addList');
+$f3->route('POST @addList: /list/add', 'TaskListViewController->addListSave');
 
-// modify (delete or update)
-$f3->route('GET @modifyList: /list/modify', 'ListsController->modifyList');
+// edit list
+$f3->route('GET @editList: /list/@id/edit', 'TaskListViewController->editList');
+$f3->route('POST @editList: /list/@id/edit', 'TaskListViewController->editListSave');
+
+// delete list
+$f3->route('GET @deleteList: /list/@id/delete', 'TaskListViewController->deleteList');
 
 // TASKS
 
-// add a new task - save form data  
-// $f3->route('POST @addTask: /task', 'TaskController->addTask');
-
-// fetching tasks by list name
-$f3->route('GET @tasksByListName: /tasks/@list_name', 'TaskListViewController->tasksByListName');
+// add a new task
+$f3->route('GET @addTask: /list/@id/task', 'TaskListViewController->addTask');
+$f3->route('POST @addTask: /list/@id/task', 'TaskListViewController->addTaskSave');
 
 
 $f3->run();

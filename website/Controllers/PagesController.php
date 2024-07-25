@@ -251,7 +251,7 @@ class PagesController extends Controller{
     /**
      * Handles the submission of the contact us page form
      */
-    public function contactSave() {
+    function contactSave() {
 
         $errors = [];
 
@@ -336,36 +336,9 @@ class PagesController extends Controller{
         echo $this->template->render('dashboard.html');
     }
 
-
-    /**
-     * TODO: put into Controller parent class
-     * Function to get all POST input values, trim them, and check if any POST variables are empty
-     *
-     * @return boolean true if any input is empty, false otherwise
-     */
-    private function inputTrimAndCheckIfEmpty() {
-        foreach ($this->f3->get('POST') as $key => $value) {
-            if (is_string( $value)){
-                $value = trim($value ?? '');
-            } 
-            if ($value === '') {
-                return true;
-            }
-        }
-        return false;
-    }
     
     
-    /**
-     * Checks if the user is logged in
-     * 
-     * @return bool True if logged in, false otherwise
-     */
-    private function isLoggedIn() {
-        $session = $this->f3->get('SESSION');
-        
-        return isset($_SESSION['userEmail'] );
-    }
+    
     
 
 }

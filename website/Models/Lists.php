@@ -32,6 +32,7 @@ class Lists extends Model{
     return $this->find(['user_id = ?', $user_id]);
   }
 
+
   /*
   TODO: something with order List if I have time - maybe draggable div    
    */
