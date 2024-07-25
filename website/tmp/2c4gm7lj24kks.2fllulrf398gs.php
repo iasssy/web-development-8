@@ -18,37 +18,43 @@
               <small class="text-uppercase text-secondary mt-3 ms-lg-3 mx-auto mx-lg-0">Main menu</small>
 
               <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                  <li class="nav-item">
-                      <a href="#" class="nav-link align-middle">
-                        <i class="bi bi-star fs-5"></i>
-                        <span class="ms-1 d-none d-sm-inline">Important</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
-                        <i class="bi bi-calendar-event fs-5"></i>
-                        <span class="ms-1 d-none d-sm-inline">Completed</span> 
-                      </a>
-                  </li> 
-                <!----  <li>
-                      <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
-                        <i class="bi bi-briefcase"></i>
-                        <span class="ms-1 d-none d-sm-inline">Weekdays</span> 
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
-                        <i class="bi bi-sun"></i>
-                        <span class="ms-1 d-none d-sm-inline">Weekends</span> 
-                      </a>
-                  </li> --> 
-                  
-                  <hr class="w-100 border border-secondary border-1">
+                <li class="nav-item">
+                  <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
+                    <i class="bi bi-sun fs-5"></i>
+                    <span class="ms-1 d-none d-sm-inline">Today</span> 
+                  </a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link align-middle">
+                      <i class="bi bi-star fs-5"></i>
+                      <span class="ms-1 d-none d-sm-inline">Important</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
+                      <i class="bi bi-calendar-event fs-5"></i>
+                      <span class="ms-1 d-none d-sm-inline">Completed</span> 
+                    </a>
+                </li> 
+              <!----  <li>
+                    <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
+                      <i class="bi bi-briefcase"></i>
+                      <span class="ms-1 d-none d-sm-inline">Weekdays</span> 
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-bs-toggle="collapse" class="nav-link align-middle">
+                      <i class="bi bi-sun"></i>
+                      <span class="ms-1 d-none d-sm-inline">Weekends</span> 
+                    </a>
+                </li> --> 
                 
-                  <small class="text-uppercase text-secondary ms-lg-3 mx-auto mx-lg-0">My lists</small>
-                  <div id="listsContainer">
-                    <?php echo $this->render('tasks/lists.html',NULL,get_defined_vars(),0); ?>
-                  </div>
+                <hr class="w-100 border border-secondary border-1">
+              
+                <small class="text-uppercase text-secondary ms-lg-3 mx-auto mx-lg-0">My lists</small>
+                <div id="listsContainer">
+                  <?php echo $this->render('tasks/lists.html',NULL,get_defined_vars(),0); ?>
+                </div>
                   
               </ul>
           </div>
@@ -64,8 +70,8 @@
             <!-- header part with Task list name and date-->
             <div class="row">
               <div class="col-md-8">
-                <h3 class="mb-2 text-secondary float-start lead">
-                  <i class="bi bi-speedometer2"></i>                
+                <h3 class="text-secondary float-start lead pt-3">
+                  <i class="bi bi-speedometer2 "></i>                
                   <span class="">Dashboard</span>
                   
                 </h3>
@@ -97,44 +103,8 @@
         </div>
 
         
-      </div>
-      
+      </div>      
       <!-- end of right side content -->
-
-      <!-- MODALS-->
-       
-      <!-- modal for creating task -->
-      <div class="modal fade" id="createTaskModal" tabindex="-1" aria-labelledby="createTaskModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="createTaskModalLabel">Creating a new task</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">               
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="title">
-                  <label for="floatingNameInput">Task title</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="floatingInput" placeholder="" name="description">
-                  <label for="floatingInput">Task description</label>
-                </div>
-                <small>Due date</small>
-                <br>
-                <!-- Date and time pickers-->
-                <div class="container-fluid m-0 p-0 mb-4">
-                  <input class="form-control" type="datetime-local">
-                </div>
-              
-
-                <button type="submit" class="btn btn-primary px-4 rounded-pill">Save</button>
-              </form>
-            </div>
-            </div>
-          </div>
-        </div>
 
       </div>
 

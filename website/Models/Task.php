@@ -23,4 +23,14 @@ class Task extends Model{
     return $this->query;
   }
 
+   /**
+   * Fetches tasks created by user
+   * @param int $user_id  Id of the user (logged in)
+   * @return Object database results   * 
+   */
+  public function fetchAllTasksByUserId($user_id) {
+    return $this->find(['user_id = ?', $user_id]);
+  }
+
+
 }
