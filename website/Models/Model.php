@@ -69,7 +69,13 @@ class Model extends DB\SQL\Mapper {
   }
 
    /**
-   * TODO description
+   * Fetch records from a table where a specific column matches a given value
+   * 
+   * @param string $table The name of the table to fetch records from
+   * @param string $field The name of the column to match the value
+   * @param mixed $value The value to match in the specified column
+   * @return array The array of records that match the specified criteria
+   * 
    */
   public function fetchTableByColumnValue($table, $field, $value) {
     $query = "SELECT * FROM $table WHERE $field = ?";
@@ -77,7 +83,13 @@ class Model extends DB\SQL\Mapper {
   }
 
    /**
-   * TODO description
+   * Fetch records from a table for a specific user where a specific column matches a given value
+   * 
+   * @param int $user_id The ID of the user to fetch records for
+   * @param string $table The name of the table to fetch records from
+   * @param string $field The name of the column to match the value
+   * @param mixed $value The value to match in the specified
+   * @return array The array of records that match the specified criteria
    */
   public function fetchTableByColumnValueForUser($user_id, $table, $field, $value) {
     $query = "SELECT * FROM $table WHERE user_id=? AND $field = ?";

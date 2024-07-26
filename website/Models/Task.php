@@ -56,7 +56,11 @@ class Task extends Model{
   // completedTasks (html=>list, count=>statistics panel)
 
    /**
-   * TODO
+   * Count all tasks for a specific user within a specific list.
+   * 
+   * @param int $list_id The ID of the list to count tasks in
+   * @param int $user_id The ID of the user to count tasks for
+   * @return int The count of tasks that match the specified criteria
    */
   public function countAllTasksByUser($list_id, $user_id) {
     return $this->db->exec('SELECT COUNT(*) AS count FROM tasks WHERE list_id = ? AND user_id = ?', [$list_id, $user_id])[0]['count'];
