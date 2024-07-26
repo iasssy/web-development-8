@@ -33,4 +33,34 @@ class Task extends Model{
   }
 
 
+  /**
+   * Counts the quantity of task rows where $fieldName equals $fieldValue for the given $list_id and $user_id.
+   *
+   * @param int $list_id - list ID
+   * @param string $fieldName - The name of the field to check.
+   * @param string $fieldValue - The value of the field to match.
+   * @param int $user_id - The user ID.
+   * @return int - The count of rows matching the criteria.
+   */
+  public function countTaskRowsByFieldAndUser($list_id, $user_id, $fieldName, $fieldValue) {
+    $query = "SELECT COUNT(*) FROM tasks WHERE $fieldName = :fieldValue AND list_id = :list_id AND user_id = :user_id";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute([
+        ':fieldValue' => $fieldValue,
+        ':list_id' => $list_id,
+        ':user_id' => $user_id
+    ]);
+    return $stmt->fetchColumn();
+  }
+
+  // completedTasks (html=>list, count=>statistics panel)
+
+   /**
+   * TODO
+   */
+  public function countAllTasksByUser($list_id, $user_id) {
+    return $this->db->exec('SELECT COUNT(*) AS count FROM tasks WHERE list_id = ? AND user_id = ?', [$list_id, $user_id])[0]['count'];
+  }
+
+
 }

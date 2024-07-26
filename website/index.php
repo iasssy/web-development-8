@@ -49,7 +49,7 @@ $f3->route('GET @lists: /list', 'TaskListViewController->allList');
 $f3->route('GET @showListByIdWithTasks: /list/@id', 'TaskListViewController->showListByIdWithTasks');
 
 // show important tasks  
-// $f3->route('GET @importantTasks: dashboard/task/important', 'TaskListViewController->importantTasks'); 
+// $f3->route('GET @importantTasks: dashboard/task/importance', 'TaskListViewController->importantTasks'); 
 
 // create/add a new list
 $f3->route('GET @addList: /list/add', 'TaskListViewController->addList');
@@ -67,6 +67,23 @@ $f3->route('GET @deleteList: /list/@id/delete', 'TaskListViewController->deleteL
 // add a new task
 $f3->route('GET @addTask: /list/@id/task', 'TaskListViewController->addTask');
 $f3->route('POST @addTask: /list/@id/task', 'TaskListViewController->addTaskSave');
+
+// edit the task
+$f3->route('GET @editTask: /task/@id/edit', 'TaskListViewController->editTask');
+$f3->route('POST @editTask: /task/@id/edit', 'TaskListViewController->editTaskSave');
+
+// delete the task
+$f3->route('GET @deleteTask: /task/@id/delete', 'TaskListViewController->deleteTask');
+
+// completed, @status will be a new (opposite) status of the task
+$f3->route('GET @changeStatusCompletedTask: /task/@id/completed/@newStatus', 'TaskListViewController->changeStatusCompletedTask');
+
+// important task 
+$f3->route('GET @changeImportanceTask: /task/@id/importance/@importance', 'TaskListViewController->changeImportanceTask');
+
+// count all the tasks for the given list: @filterType can be 'importance', 'completed' or 'all'
+$f3->route('GET @countTasksForList: /list/@id/task/@filterType/count', 'TaskListViewController->countTasksForList');
+
 
 
 $f3->run();

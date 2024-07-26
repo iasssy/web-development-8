@@ -118,4 +118,24 @@ public function isLoggedIn() {
 }
  
 
+/**
+ * Count rows with given fieldName in any model (for the logged-in user)
+ * @param $model -  model for the table in the database
+ * @param $fieldName - field in the database table 
+ * @param $fieldValue - field value in the database table 
+ */
+/*
+public function rowsCount($model, $fieldName, $fieldValue){    
+  $user_id = $this->f3->get('SESSION.user_id');
+  $countRows = $this->$model->countRowsByFieldAndUser($fieldName, $fieldValue, $user_id);
+
+  header('Content-Type: application/json');
+  if ($countRows !== false){
+    echo json_encode(['status' => 'success', 'count' => $countRows]);
+  } else {
+    echo json_encode(['status' => 'error', 'error' => 'Failed to fetcth important tasks.']);
+  }
+}
+  */
+
 }

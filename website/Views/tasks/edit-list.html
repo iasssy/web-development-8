@@ -1,5 +1,5 @@
 <div id="modal-errors"></div>
-<form action="{{ @BASE }}{{ 'editList' | alias }}" id="editListForm" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">               
+<form id="editListForm" action="{{ @BASE }}{{ 'editList' | alias }}" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">               
   <div class="form-floating mb-3">
     <input type="text" class="form-control" id="floatingNameInput" placeholder="Your Name" name="title" value="{{ @itemList['title'] }}">
     <label for="floatingNameInput">List title</label>
