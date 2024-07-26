@@ -86,9 +86,6 @@ public function checkRememberMe() {
 }
 
 
-// TODO: to make same thing with meta description - set up default and append if it is already set
-
-
 /**
  * Function to get all POST input values, trim them, and check if any POST variables are empty
  *

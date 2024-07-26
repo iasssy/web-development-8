@@ -72,19 +72,23 @@ Day 13 (2024-7-24)
     - Handled ajax requests on re-rendered items
 
 Day 14 (2024-7-25) 
-    -     
+    - Handled changing status of completed task, their importance, with counting  their statistics. 
+    - Handled editing of task, deleting. Fixed the redirecting of all form submits. 
 
 
 Errors not fixed:
     - For some reason, when the user is a new one, having no lists, a new list is not created
-    - For the logged user, if the list has no tasks, the quick statistics panel is not not present, and the jquery of updating it is performed. 
-    I tried to add it (having "0"), but couldn't for some reason. That's why the Console shows jquery errors.
+    - For the logged user, if the list has no tasks, the quick statistics panel is not not present, 
+        and the jquery of updating it (updateQuickStats) is still performed. 
+        I tried to add it (having "0"), but couldn't for some reason. That's why the Console shows jquery errors.
     - gitignore seems not working
     - For some reason, if I use Fat-Free syntax in "tasks/edit-task.html", this form stops working, had to use simple PHP
 
 
 Features that will be implemented in future:
     - checkbox "Remember me" functionality in both log in and sign up
-    
-TODO: check all the comments and functions descriptions
+    - user profile modification (username and avatar)
+    - list order implementation
+    - due date wasn't worked with 
+
     

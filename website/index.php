@@ -20,7 +20,6 @@ $f3->config('access.ini'); // sensitive data
 $f3->route('GET @home: /', 'PagesController->homepage'); 
 
 $f3->route('GET @dashboard: /dashboard', 'PagesController->dashboard');
-// TODO: list name or 1st list in order $f3->route('GET @dashboard: /dashboard/list/@list_name', 'PagesController->dashboard');
 
 // Log in hadling
 $f3->route('GET @login: /login', 'PagesController->login');

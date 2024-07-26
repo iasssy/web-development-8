@@ -19,7 +19,11 @@ class TaskListViewController extends Controller {
   }
 
   /**
-   * TODO description
+  * Display a list by its ID along with all associated tasks.
+ * 
+ * @param Base $f3 The Fat-Free Framework instance.
+ * @param array $params The parameters passed to the route (expected to contain 'id')
+ 
    */
   public function showListByIdWithTasks($f3, $params) {
 
@@ -83,8 +87,7 @@ class TaskListViewController extends Controller {
    * Rendering form for creating a new List
    */
   public function addList(){
-    // TODO: getting error message ?
-    
+   
     // setting POST data for populating the form
     $this->f3->set('item', $this->f3->get('POST'));
     // rendering add list form
@@ -270,6 +273,9 @@ class TaskListViewController extends Controller {
 
   /**
    * Renders a form for creating a new task (for the rendered list)
+   * 
+   * @param Base $f3 The Fat-Free Framework instance.
+   * @param array $params The parameters passed to the route (expected to contain 'list_id')
    */
   function addTask($f3, $params){
     $list_id = $this->f3->get('PARAMS.id');
@@ -281,6 +287,7 @@ class TaskListViewController extends Controller {
 
   /**
    * Saves the data from the form for creating a new task
+   * 
    */
   function addTaskSave(){
     $list_id = $this->f3->get('PARAMS.id');
@@ -395,6 +402,9 @@ class TaskListViewController extends Controller {
 
   /**
    * Function to count important tasks in the given list
+   * 
+   * @param Base $f3 The Fat-Free Framework instance.
+   * @param array $params The parameters passed to the route (expected to contain 'list_id' and 'filterType')
    */
   function countTasksForList($f3, $params){
     $list_id = $this->f3->get('PARAMS.id');
@@ -416,7 +426,10 @@ class TaskListViewController extends Controller {
   }
 
   /**
-   * TODO
+   * Hadling editing of task - rendering form 
+   * 
+   * @param Base $f3 The Fat-Free Framework instance.
+   * @param array $params The parameters passed to the route (expected to contain 'id')
    */
   function editTask($f3, $params){
     error_log('editTask is performing');
@@ -435,7 +448,8 @@ class TaskListViewController extends Controller {
   }
 
   /**
-   * TODO
+   * Hadling editing of task - submitting
+   * 
    */
   function editTaskSave(){    
     error_log('editTaskSave is performing');

@@ -13,7 +13,6 @@ $(document).ready(function() {
         // debugging html
         // console.log('Response HTML:', response.html);
         if (response.status === 'success') {
-          // TODO loading spinner           
           $('#listsContainer').html(response.html);
 
           // hiding modal
@@ -170,7 +169,6 @@ $(document).ready(function() {
         // debugging html
         // console.log('Response HTML:', response.html);
         if (response.status === 'success') {
-          // TODO loading spinner           
           $('#dashboard-right-content').html(response.html);               
           updateQuickStats();
 
@@ -313,7 +311,6 @@ $(document).ready(function() {
         // debugging html
         // console.log('Response HTML:', response.html);
         if (response.status === 'success') {
-          // TODO loading spinner           
           $('#dashboard-right-content').html(response.html);               
           updateQuickStats();
 
@@ -385,9 +382,11 @@ $(document).ready(function() {
   }
 
    /**
-   * TODO 
+   * Update the count displayed in the specified jQuery selector
+   * 
    * @param {*} jqueryselector 
-   * @param {*} url 
+   * @param {*} url    * 
+   * @param {string} jqueryselector - The jQuery selector of the element to update
    */
   
    function updateCount(jqueryselector){
@@ -407,7 +406,7 @@ $(document).ready(function() {
           console.error("Error fetching count: ", xhr);
       }
     });
-  }
+   }
 
 
 });
