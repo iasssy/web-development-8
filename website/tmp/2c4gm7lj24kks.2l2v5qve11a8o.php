@@ -37,7 +37,7 @@
       </div>
   </div>
 
-<!-- modal for creating a new list -->
+<!-- modal for editing a new list -->
   <div class="modal fade" id="editListModal" tabindex="-1" aria-labelledby="editListModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -52,7 +52,7 @@
       </div>
   </div>
 
-  <!-- Modal for delete confirmation -->
+<!-- Modal for delete confirmation -->
 <div class="modal fade" id="deleteListModal" tabindex="-1" aria-labelledby="deleteListModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -70,3 +70,7 @@
     </div>
   </div>
 </div>
+
+
+
+

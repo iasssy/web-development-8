@@ -150,6 +150,8 @@ class Model extends DB\SQL\Mapper {
 
   }
 
+ 
+
   
   /**
   * Validate if the column name exists in the table
@@ -194,5 +196,25 @@ class Model extends DB\SQL\Mapper {
     
     return $columns;
   }
+
+
+  /**
+   * Generic function to update any field in database (if field name for id is "id")
+   * @param string some_id ID value of field "id"
+   * @param string $field name of the field
+   * @param string $value value of the field to be updated
+   */
+  public function updateFieldById($some_id, $field, $value) {
+    $this->load(['id = ?', $some_id]);
+    if (!$this->dry()) {
+        $this->$field = $value;
+        $this->save();
+        return true;
+    }
+    return false;
+  }
+
+
+  // function countRows 
 
 }

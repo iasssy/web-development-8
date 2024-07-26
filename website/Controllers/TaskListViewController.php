@@ -220,35 +220,50 @@ class TaskListViewController extends Controller {
   }
 
   /**
-   * Rendering form for editing the list
+   * Deleting the list
    */
   public function deleteList(){    
     // fetching the list ID from URL parameters
     $list_id = $this->f3->get('PARAMS.id');
-    error_log("list_id = " . $list_id);
+    // error_log("list_id = " . $list_id);
 
     
-    // Ensure list_id is valid
+    // checking if list_id is valid
     if (is_numeric($list_id) && $list_id > 0) {
-      $this->listsModel->deleteById($list_id);
+      // checking if the list has tasks
+      $taskCount = $this->taskModel->count(['list_id = ?', $list_id]);
       
-      // fetching the updated lists for rendering
-      $user_id = $this->f3->get('SESSION.user_id');
-      $resultsLists = $this->listsModel->fetchAllList($user_id);
-      $this->f3->set('resultsLists', $resultsLists);
-      // capturing HTML output
-      ob_start();
-      echo Template::instance()->render('tasks/lists.html');
-      $html = ob_get_clean();
+      if ($taskCount > 0) {
+        // show error if the list has tasks
+        $list_info = $this->listsModel->fetchById($list_id);
 
-      // returning as JSON with status success
-      header('Content-Type: application/json');
-      echo json_encode(['status' => 'success', 'html' => $html]);
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'error', 'errors' => ['The list "' . $list_info['title'] . '" cannot be deleted because it has tasks. Please delete the tasks first.']
+      ]);
+    } else {
+
+        // delete the list (no tasks are found)
+        $this->listsModel->deleteById($list_id);
+
+        // fetching the updated lists for rendering
+        $user_id = $this->f3->get('SESSION.user_id');
+        $resultsLists = $this->listsModel->fetchAllList($user_id);
+        $this->f3->set('resultsLists', $resultsLists);
+
+        // capturing HTML output
+        ob_start();
+        echo Template::instance()->render('tasks/lists.html');
+        $html = ob_get_clean();
+
+        // returning as JSON with status success
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'success', 'html' => $html]);
+      }
     } else {
       // error for invalid list ID
       header('Content-Type: application/json');
       echo json_encode(['status' => 'error', 'errors' => ["Invalid list ID"]]);
-    }
+    }   
 
   }
 
@@ -283,7 +298,7 @@ class TaskListViewController extends Controller {
     // error_log("Fetched Data: " . print_r($taskAlreadyExist, true));
 
     if ($taskAlreadyExist ){
-      array_push($errors, 'Task "{$title}" already exists.');
+      array_push($errors, 'Task already exists.');
 
     } else {   
       // validating length        
@@ -306,10 +321,6 @@ class TaskListViewController extends Controller {
         // error_log("Fetched Data: " . print_r($newTask, true));
         // saving the new task
         $this->taskModel->addItemWithData($newTask);
-
-        // fetch the updated lists for rendering
-        $resultsTask = $this->taskModel->fetchAllTasksByUserId($user_id); 
-        $this->f3->set('resultsTask', $resultsTask);
         
         ob_start();
         $html = $this->showListByIdWithTasks($this->f3, ['id' => $list_id]);
@@ -323,5 +334,194 @@ class TaskListViewController extends Controller {
   }
 
 
+  
+  /**
+   * changing status of completed task
+   */
+  function changeStatusCompletedTask(){
+    // echo 'changeStatusCompletedTask is performing';
 
+    $task_id = $this->f3->get('PARAMS.id');
+    $newStatus = $this->f3->get('PARAMS.newStatus');
+
+    $list_id = $this->f3->get('GET.list_id');
+
+    $updatedResult = $this->taskModel->updateFieldById($task_id, 'completed',  $newStatus);
+
+    if ($updatedResult) {
+
+      // update list with tasks to be re-rendered 
+      ob_start();
+      $html = $this->showListByIdWithTasks($this->f3, ['id' => $list_id]);
+      $html = ob_get_clean();
+
+      header('Content-Type: application/json');
+      echo json_encode(['status' => 'success', 'html' => $html]);
+    } else {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'error', 'error' => 'Failed to update task']);
+    }
+  }
+
+
+  /**
+   * change importance of tasks
+   */
+  function changeImportanceTask(){
+    // echo 'changeStatusCompletedTask is performing';
+
+    $task_id = $this->f3->get('PARAMS.id');
+    $importance = $this->f3->get('PARAMS.importance');
+
+    $list_id = $this->f3->get('GET.list_id');
+
+    $updatedResult = $this->taskModel->updateFieldById($task_id, 'importance',  $importance);
+
+    if ($updatedResult) {
+
+      // update list with tasks to be re-rendered 
+      ob_start();
+      $html = $this->showListByIdWithTasks($this->f3, ['id' => $list_id]);
+      $html = ob_get_clean();
+
+      header('Content-Type: application/json');
+      echo json_encode(['status' => 'success', 'html' => $html]);
+    } else {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'error', 'error' => 'Failed to update task']);
+    }
+  }
+
+
+  /**
+   * Function to count important tasks in the given list
+   */
+  function countTasksForList($f3, $params){
+    $list_id = $this->f3->get('PARAMS.id');
+    $user_id = $this->f3->get('SESSION.user_id');
+    $filterType = trim($this->f3->get('PARAMS.filterType')); // 'importance', 'completed' (table fields) and 'all'
+    if ($filterType == 'all'){
+      $countRows = $this->taskModel->countAllTasksByUser($list_id, $user_id);
+    } else {
+      $fieldValue = 1;    
+      $countRows = $this->taskModel->countTaskRowsByFieldAndUser($list_id, $user_id, $filterType, $fieldValue);
+    }
+    header('Content-Type: application/json');
+    if ($countRows !== false){
+      echo json_encode(['status' => 'success', 'count' => $countRows]);
+    } else {
+      echo json_encode(['status' => 'error', 'error' => 'Failed to fetcth important tasks.']);
+    }
+
+  }
+
+  /**
+   * TODO
+   */
+  function editTask($f3, $params){
+    error_log('editTask is performing');
+    $task_id = $this->f3->get('PARAMS.id');
+    error_log('task_id: ' . $task_id);
+    $itemTask = $this->taskModel->fetchById($task_id);
+    
+    if ($itemTask) {
+        $f3->set('itemTask', $itemTask);
+        echo Template::instance()->render('tasks/edit-task.html');
+    } else {
+        // Handle error, item not found
+        echo 'Task not found';
+    }
+
+  }
+
+  /**
+   * TODO
+   */
+  function editTaskSave(){    
+    error_log('editTaskSave is performing');
+    $errors = [];
+
+    // checking if any fields are empty
+    if ($this->inputTrimAndCheckIfEmpty()) {
+        array_push($errors, "Field is required.");
+
+    } else {
+      $title = trim($this->f3->get('POST.title'));
+      $description = trim($this->f3->get('POST.description'));
+      // Validating title length        
+      if (!$this->validateLength($title, 3, 50)) {
+          array_push($errors, "Task title must be between 3 and 50 characters.");
+      }        
+    }
+
+    // Checking if there are errors
+    if (!empty($errors)) {
+      // to prevent the browser from interpreting the response as HTML
+      header('Content-Type: application/json');
+      // returning as JSON with status error
+      echo json_encode(['status' => 'error', 'errors' => $errors]);
+    } else {
+        $task_id = $this->f3->get('POST.task_id');
+        $list_id = $this->f3->get('POST.list_id');
+
+        // Ensure list_id is valid
+        if (is_numeric($task_id) && $task_id > 0) {
+          // updating the list
+          $this->taskModel->updateById($task_id, ['title' => $title, 'description' => $description]);
+
+          // fetching the updated lists for rendering
+          $user_id = $this->f3->get('SESSION.user_id');
+          
+          ob_start();
+          $html = $this->showListByIdWithTasks($this->f3, ['id' => $list_id]);
+          $html = ob_get_clean();
+
+          // returning as JSON with status success
+          header('Content-Type: application/json');
+          echo json_encode(['status' => 'success', 'html' => $html]);
+        } else {
+            // Handle error for invalid list ID
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'error', 'errors' => ["Invalid task ID"]]);
+        }
+    }
+  }
+
+
+
+  
+  /**
+   * Deleting task
+   */
+  public function deleteTask(){    
+    // fetching the task_id from URL parameters
+    $task_id = $this->f3->get('PARAMS.id');
+    // error_log("task_id = " . $task_id);
+
+    $list_id = $this->f3->get('GET.list_id');
+
+    
+    // checking if task_id is valid
+    if (is_numeric($task_id) && $task_id > 0) {      
+      // delete the task
+      $this->taskModel->deleteById($task_id);
+
+      ob_start();
+      $html = $this->showListByIdWithTasks($this->f3, ['id' => $list_id]);
+      $html = ob_get_clean();
+
+      // returning as JSON with status success
+      header('Content-Type: application/json');
+      echo json_encode(['status' => 'success', 'html' => $html]);
+      
+    } else {
+      // error for invalid list ID
+      header('Content-Type: application/json');
+      echo json_encode(['status' => 'error', 'errors' => ["Invalid list ID"]]);
+    }   
+
+  }
+
+
+  
 }

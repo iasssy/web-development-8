@@ -1,0 +1,33 @@
+
+<!-- For some reason, if I use Fat-Free syntax, this form stops working, had to use simple php -->
+<div id="modal-errors"></div>
+<form id="editTaskForm" action="{{ @BASE }}{{ 'editTask', ['id'=>  isset($itemTask['id']) ? $itemTask['id'] : ''] | alias }}" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">               
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingNameInput" placeholder="Task title" name="title" value="{{ isset($itemTask['title']) ? $itemTask['title'] : '' }}">
+    <label for="floatingNameInput">Task title</label>
+  </div>
+  <div class="form-floating mb-4">
+    <input type="text" class="form-control" id="floatingInput" placeholder="" name="description" value="{{ isset($itemTask['description']) ? $itemTask['description'] : '' }}">
+    <label for="floatingInput">Task description</label>
+  </div>
+  <input type="hidden" name="task_id" value="{{ isset($itemTask['id']) ? $itemTask['id'] : '' }}">
+  <input type="hidden" name="list_id" value="{{ isset($itemTask['list_id']) ? $itemTask['list_id'] : '' }}">
+
+
+  <!--
+  <small>Due date</small>
+  <br>
+  {* Date and time pickers *} 
+  
+  <div class="container-fluid m-0 p-0 mb-4">
+    <input class="form-control" type="datetime-local">
+  </div>
+  -->
+
+  <button type="submit" class="btn btn-primary px-4 rounded-pill">Save</button>
+  <button type="button" class="btn btn-danger px-4 rounded-pill ms-4 delete-task-button"
+  data-list="{{ isset($itemTask['list_id']) ? $itemTask['list_id'] : '' }}" 
+  data-href="{{ @BASE }}{{ 'deleteTask', ['id'=>  isset($itemTask['id']) ? $itemTask['id'] : ''] | alias }}">
+    Delete task
+  </button>
+</form>
